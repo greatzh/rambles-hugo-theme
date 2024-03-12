@@ -707,9 +707,11 @@ ul.language-select > li, ul.footer-menu > li {
 .highlight {
     position: relative;
     overflow: auto;
+    border-radius: 5px;
 }
 .highlight pre {
     padding-right: 75px;
+    padding-left: 10px;
 }
 
 .highlight:hover .highlight-copy-btn {
