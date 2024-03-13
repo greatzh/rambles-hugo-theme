@@ -75,10 +75,12 @@ main {
 /* Headers */
 h1 {
     font-size: 1.35em;
+    font-family: -apple-system, BlinkMacSystemFont, PingFang SC, Hiragino Sans GB, Microsoft YaHei, "\5FAE\8F6F\96C5\9ED1", helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, Arial, sans-serif;
 }
 
 h2 {
     font-size: 1.2em;
+    font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Hiragino Sans GB", "Microsoft YaHei", 微软雅黑, Arial, sans-serif;
 }
 
 h3 {
@@ -157,8 +159,6 @@ th, td {
 pre {
     max-width: 100%;
     overflow: auto;
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 code,
@@ -169,6 +169,8 @@ kbd {
     font-family: monospace;
     font-size: 0.90em;
     line-height: 154%;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 pre code, pre kbd {
@@ -187,6 +189,8 @@ blockquote {
 p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
+    font: 400 17px/1.75 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+
 }
 
 hr {
@@ -200,7 +204,6 @@ hr {
 
 .common-header {
     padding-bottom: 1.5em;
-    border-bottom: thin solid var(--hr-color);
 }
 
 header a {
@@ -668,7 +671,6 @@ code.has-jax {
 /* Footer */
 
 .common-footer {
-    border-top: thin solid var(--hr-color);
     padding-top: 1.5em;
     margin-top: 3em;
     font-size: 16px;
