@@ -1,11 +1,15 @@
 <div class="header-top">
-    <div class="header-top-left">
+    <span class="header-top-left">
         {{ partial "site-title.html" . }}
+        {{ $languagesCount := $.Site.Home.AllTranslations }}
+        {{ if gt $languagesCount 1 }}
+            {{ partial "language-switcher.html" . }}
+        {{ end }}
+    </span>
+    <span class="header-top-right">
         {{ partial "social.html" . }}
-    </div>
-    <div class="header-top-right">
         {{ partial "theme-switcher.html" . }}  
-    </div>
+    </span>
 </div>
 
 {{ if .Site.Menus.main }}

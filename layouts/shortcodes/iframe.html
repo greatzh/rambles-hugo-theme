@@ -1,0 +1,14 @@
+<iframe 
+    class="iframe-shortcode" 
+    src="{{ .Get "src" }}" 
+    scrolling="{{ .Get "scrolling" }}" 
+    frameborder="{{ .Get "frameborder" }}" 
+    framespacing="{{ .Get "framespacing" }}" 
+    allowfullscreen="{{ .Get "allowfullscreen" }}"
+    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+>
+{{ if .Get "caption" }}
+    <figcaption>
+        {{ .Get "caption" | markdownify }}
+    </figcaption>
+{{ end }}

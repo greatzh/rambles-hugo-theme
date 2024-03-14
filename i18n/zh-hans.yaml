@@ -45,3 +45,6 @@ skipToContent:
 
 readNext:
   other: "继续阅读"
+
+imageLoading:
+  other: "图片还在加载中……"  

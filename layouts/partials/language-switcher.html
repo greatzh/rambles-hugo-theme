@@ -7,7 +7,7 @@
 
     {{ range $translations }}
         {{ if eq .Lang $pageLang }}
-            <li>{{ .Language.LanguageName }}</li>
+            <li class="language-selected">{{ .Language.LanguageName }}</li>
         {{ else }}
             <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
         {{ end }}

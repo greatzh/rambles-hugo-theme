@@ -1,0 +1,11 @@
+<img 
+    class="img-shortcode" 
+    src="{{ .Get "src" }}" 
+    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+>
+{{ if .Get "caption" }}
+    <figcaption>
+        {{ .Get "caption" | markdownify }}
+    </figcaption>
+{{ end }}
+
