@@ -824,6 +824,38 @@ ul.language-select>li+li::before {
     height: 100%;
 }
 
+.table-container {
+    overflow-x: auto; /* 显示水平滚动条 */
+    max-width: 100%; /* 设置容器的最大宽度为父容器的宽度 */
+    border-radius: 10px;
+    font: 400 15px/1.05 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+}
+
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 自动适应列宽 */
+    gap: 10px; /* 设置图片之间的间距 */
+    max-width: 90%;
+    margin: 0 auto;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.image-container > img {
+    max-width: 100%; /* 图片宽度自适应容器 */
+    height: auto; /* 保持图片比例 */
+}
+
+.image-container-caption > p {
+    color: grey;
+    text-align: center;
+    font-size: 0.85em;
+    margin-top: 0;
+    margin-bottom: 2em;
+}
+
+
+
 
 /* Media Queries */
 
@@ -882,6 +914,22 @@ ul.language-select>li+li::before {
     }
     .site-title {
         margin-top: 0;
+    }
+
+    .image-container {
+        display: inherit;
+        overflow-x: auto; /* 显示水平滚动条 */
+        white-space: nowrap; /* 防止图片换行 */
+        scroll-behavior: smooth; /* 平滑滚动效果 */
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .image-container > img {
+        display: inline-block; /* 将图片显示为行内块级元素 */
+        max-width: 100%; /* 图片宽度自适应容器 */
+        height: auto; /* 保持图片比例 */
+        margin-right: 10px; /* 设置图片之间的间距 */
     }
 }
 

@@ -60,3 +60,18 @@ videoIsNotSupported:
 
 imageLoading:
   other: "The image is loading……"  
+
+reflections:
+  other: "Reflections"
+
+tools:
+  other: "Tools"
+
+technews:
+  other: "Tech News"
+
+scientificresearch:
+  other: "Scientific Research"
+
+chatgpt:
+  other: "ChatGPT"
