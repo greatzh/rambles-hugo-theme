@@ -835,7 +835,7 @@ ul.language-select>li+li::before {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 自动适应列宽 */
     gap: 10px; /* 设置图片之间的间距 */
-    max-width: 90%;
+    max-width: 100%;
     margin: 0 auto;
     align-items: center;
     border-radius: 10px;
