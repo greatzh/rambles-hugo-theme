@@ -75,3 +75,6 @@ scientificresearch:
 
 chatgpt:
   other: "ChatGPT"
+
+scroll-hint:
+  other: "swipe left/right to view more images"  

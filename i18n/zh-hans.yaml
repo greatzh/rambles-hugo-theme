@@ -63,3 +63,6 @@ scientificresearch:
 
 chatgpt:
   other: "ChatGPT"
+
+scroll-hint:
+  other: "左右滑动查看更多图片"    
