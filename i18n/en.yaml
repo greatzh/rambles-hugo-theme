@@ -78,3 +78,6 @@ chatgpt:
 
 scroll-hint:
   other: "swipe left/right to view more images"  
+
+aig-summary:
+  other: "AI-generated summary"  

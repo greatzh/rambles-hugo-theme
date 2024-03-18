@@ -623,6 +623,7 @@ code.has-jax {
 .post-summary {
     margin-top: 0.5em;
     display: block;
+    font: 400 17px/1.75 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
 }
 
 .post-summary > p {
@@ -848,6 +849,37 @@ ul.language-select>li+li::before {
 
 .scroll-hint {
     display: none;
+}
+
+.aig-summary-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 1.25rem auto;
+    border: 1px solid var(--aig-summary-border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    max-width: 90%;
+}
+
+.ai-summary-icon {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin-left: 1.25rem;
+    fill: var(--font-color);
+}
+
+.aig-summary-title {
+    font: 600 16px/1.5 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    margin: 0 0 0.5em;
+}
+
+.aig-summary, .aig-summary > p, .aig-summary > ol {
+    font: 400 14px/2 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    color: gray;
+    margin-top: 0.5em;
+    margin-bottom: 0;
 }
 
 

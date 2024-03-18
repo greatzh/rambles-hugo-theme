@@ -65,4 +65,7 @@ chatgpt:
   other: "ChatGPT"
 
 scroll-hint:
-  other: "左右滑动查看更多图片"    
+  other: "左右滑动查看更多图片"
+
+aig-summary:
+  other: "AI 生成的摘要"  
