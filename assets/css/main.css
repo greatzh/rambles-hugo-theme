@@ -986,7 +986,6 @@ ul.language-select>li+li::before {
     #TableOfContents ul li {
         font-size: 15px;
     }
-    
 }
 
 @media (min-width: 2048px){
