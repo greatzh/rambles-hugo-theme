@@ -211,18 +211,18 @@ blockquote > p {
 p {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-    font: 400 17px/1.95 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 400 17px/1.95 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
 
 }
 
 .content.post-summary.post-summary p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    font: 400 17px/1.75 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 400 17px/1.75 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
 }
 
 ul, ol {
-    font: 400 17px/1.95 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 400 17px/1.95 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
 }
 
 hr {
@@ -623,7 +623,7 @@ code.has-jax {
 .post-summary {
     margin-top: 0.5em;
     display: block;
-    font: 400 17px/1.75 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 400 17px/1.75 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
 }
 
 .post-summary > p {
@@ -829,7 +829,7 @@ ul.language-select>li+li::before {
     overflow-x: auto; /* 显示水平滚动条 */
     max-width: 100%; /* 设置容器的最大宽度为父容器的宽度 */
     border-radius: 10px;
-    font: 400 15px/1.05 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 400 15px/1.05 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
 }
 
 .image-container {
@@ -871,12 +871,12 @@ ul.language-select>li+li::before {
 }
 
 .aig-summary-title {
-    font: 600 16px/1.5 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 600 16px/1.5 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
     margin: 0 0 0.5em;
 }
 
 .aig-summary, .aig-summary > p, .aig-summary > ol {
-    font: 400 14px/2 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Arial,sans-serif;
+    font: 400 14px/2 Inter Variable,Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft Yahei,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,"Apple Color Emoji","Segoe UI Emoji",Segoe UI Symbol,"Noto Color Emoji";
     color: gray;
     margin-top: 0.5em;
     margin-bottom: 0;
@@ -984,7 +984,7 @@ ul.language-select>li+li::before {
         z-index: 1000;
     }
     #TableOfContents ul li {
-        font-size: 15px;
+        font-size: 14px;
     }
 }
 
