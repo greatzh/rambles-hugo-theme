@@ -14,4 +14,7 @@ social_icons:
   twitch: https://www.twitch.tv/%s
   twitter: https://twitter.com/%s
   vk: https://vk.com/%s
-  youtube: https://www.youtube.com/c/%s
+  youtube: https://www.youtube.com/@%s
+  sspai: https://sspai.com/u/%s/posts
+  bilibili: https://space.bilibili.com/%s
+  medium: https://medium.com/@%s

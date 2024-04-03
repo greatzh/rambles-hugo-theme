@@ -290,7 +290,7 @@ header nav a {
 /* Social icons */
 .social-icons {
     display: inline;
-    padding-right: 3em;
+    padding-left: 3em;
     list-style-type: none;
 }
 
@@ -408,12 +408,12 @@ main h1 {
 }
 
 article:not(:last-of-type) {
-    border-bottom: thin solid var(--hr-color);
+    /* border-bottom: thin solid var(--hr-color); */
     padding-bottom: 2em;
 }
 
 article header h1 {
-    font-size: 1.35em;
+    font-size: 1.25em;
     line-height: 1.1em;
     margin-bottom: 0.5em;
     font-weight: 600;
@@ -735,7 +735,7 @@ ul.footer-menu {
 ul.language-select {
     display: inline;
     list-style: none;
-    padding-left: 3em;
+    padding-right: 1em;
 }
 
 ul.footer-menu > li {
@@ -919,14 +919,21 @@ ul.language-select>li+li::before {
         max-width: 10em;
     }
 
+    .header-top-left-controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .header-top-left {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     .header-top-right {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         padding-top: 0.5em;
     }
 
