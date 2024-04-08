@@ -6,7 +6,7 @@
 {{ if not (in (slice "light-without-switcher" "dark-without-switcher") $style) }}
 {{ if ne "auto-without-switcher" $style }}
     <div class="theme-switcher">
-        {{ partial "font-awesome.html" (dict "iconName" "halfcircle" "custom" false) }}
+        {{ partial "font-awesome.html" (dict "iconName" "invertmode" "custom" false) }}
     </div>
 {{ end }}
 

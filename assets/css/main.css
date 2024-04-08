@@ -243,7 +243,7 @@ header a {
 }
 
 header h1 {
-    font-size: 1em;
+    font-size: 1.35em;
     margin-top: 1em;
     margin-bottom: 0;
     font-weight: normal;
@@ -315,7 +315,14 @@ header nav a {
     height: 1.15rem;
     width: 1.15rem;
     top: 0.15rem;
-    position: relative;
+    position: inherit;
+}
+.inline-svg a:hover,
+.inline-svg a:focus,
+.inline-svg a:active {
+    color: inherit;
+    border-bottom: none;
+    text-decoration: none;
 }
 
 
@@ -507,10 +514,36 @@ article header h1 a {
     stroke: var(--svg-state-color);
 }
 
+.post-list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 40px;
+    grid-auto-columns: 50vmax;
+    position: relative;
+    padding-bottom: 32px;
+    grid-template-areas: "date date content content content content content content content content content content";
+}
+.post-card-date {
+    grid-area: date;
+    margin-top: 1em;
+    font-size: 1em;
+    line-height: 1.5;
+    white-space: nowrap;
+    color: var(--post-info-color);
+}
+.post-card-date a,
+.post-card-taxonomies a {
+    color: var(--post-info-color);
+}
 .post-info {
     color: var(--post-info-color);
     font-size: 0.75em;
     margin-top: 1em;
+}
+
+.post-content {
+    grid-area: content;
 }
 
 .post-info a {
@@ -735,7 +768,7 @@ ul.footer-menu {
 ul.language-select {
     display: inline;
     list-style: none;
-    padding-right: 1em;
+    padding-right: .5em;
 }
 
 ul.footer-menu > li {
@@ -973,6 +1006,18 @@ ul.language-select>li+li::before {
         font-style: italic;
         margin-bottom: 0%;
         margin-top: 0%;
+    }
+
+    .post-list {
+        display: block;
+        position: relative;
+        padding-bottom: 32px;
+    }
+
+    .post-card-date {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
 }

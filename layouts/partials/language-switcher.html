@@ -7,9 +7,10 @@
 
     {{ range $translations }}
         {{ if eq .Lang $pageLang }}
-            <li class="language-selected">{{ .Language.LanguageName }}</li>
         {{ else }}
-            <li><a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a></li>
+            <span class="inline-svg"><a href="{{ .Permalink }}">
+                {{ partial "font-awesome.html" (dict "iconName" "language" "custom" false) }}
+            </a></span>
         {{ end }}
     {{ end }}
-</ul>
+        </ul>
