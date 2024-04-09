@@ -8,10 +8,10 @@ readMore:
   other: "继续阅读"
 
 toNewPosts:
-  other: "新文章"
+  other: "最近文章"
 
 toOldPosts:
-  other: "旧文章"
+  other: "过往文章"
 
 tag:
   other: "标签"
@@ -23,7 +23,7 @@ Tags:
   other: "标签"
 
 Posts:
-  other: "文章"
+  other: "所有文章"
 
 category:
   other: "类别"
@@ -49,20 +49,23 @@ readNext:
 imageLoading:
   other: "图片还在加载中……"  
 
-reflections:
+Reflections:
   other: "各种思考"
 
-tools:
+Tools:
   other: "工具分享"
 
-technews:
+Technews:
   other: "科技新闻"
 
-scientificresearch:
+Scientificresearch:
   other: "科学研究"
 
-chatgpt:
-  other: "ChatGPT"
+Chatgpt:
+  other: "大语言模型"
+
+Yearlyreplay:
+  other: "年度回顾"
 
 scroll-hint:
   other: "左右滑动查看更多图片"

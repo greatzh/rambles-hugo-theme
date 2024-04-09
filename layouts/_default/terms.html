@@ -1,19 +1,26 @@
 {{ define "main" }}
-    <div class="index-content">
-        {{ .Content }}
-    </div>
+<div class="index-content">
+    {{ .Content }}
+</div>
 
-    <h1>{{ i18n .Title | markdownify }}</h1>
-    <ul class="terms">
-        {{ range .Data.Terms }}
-            {{ $postsNum := len (where .Pages "Params.hidden" "!=" true) }}
-            {{ if gt $postsNum 0 }}
-                <li>
-                    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title | markdownify }}</a>
-                    ({{ $postsNum }})
-                </li>
-            {{ end}}
-        {{ end }}
-    </ul>
+<div class="title-bar">
+    <h1 class="title-bar_title">{{ i18n .Title | markdownify }}</h1>
+    <span class="title-bar_divider"></span>
+</div>
+<ul class="terms tag-grid">
+    {{ range .Data.Terms }}
+    {{ $postsNum := len (where .Pages "Params.hidden" "!=" true) }}
+    {{ if gt $postsNum 0 }}
+    <li>
+        <a href="{{ .Page.RelPermalink }}">
+            <div>
+                {{ i18n .Page.Title | markdownify }}
+                <sup>({{ $postsNum }})</sup>
+            </div>
+        </a>
+    </li>
+    {{ end}}
+    {{ end }}
+</ul>
 
 {{ end }}

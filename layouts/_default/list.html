@@ -1,35 +1,45 @@
 {{ define "main" }}
-    <div class="index-content">
-        {{ .Content }}
+<div class="index-content">
+    {{ .Content }}
+</div>
+
+<div class="articles h-feed">
+    <div class="title-bar">
+        <h1 class="title-bar_title">{{ i18n .Title | markdownify }}</h1>
+        <span class="title-bar_divider"></span>
     </div>
+    {{ $showFullContent := in .Site.Params.sectionsWithFullContentOnListPage .Section }}
+    {{ $pages := where .Pages "Params.hidden" "!=" true}}
 
-    <div class="articles h-feed">
-        <h1 class="post-title">{{ i18n .Title | markdownify }}</h1>
-        {{ $showFullContent := in .Site.Params.sectionsWithFullContentOnListPage .Section }}
-        {{ $pages := where .Pages "Params.hidden" "!=" true}}
+    {{ $pagesRange := $pages}}
+    {{ if $showFullContent }}
+    {{ $pagesRange = (.Paginate $pages).Pages }}
+    {{ end}}
 
-        {{ $pagesRange := $pages}}
-        {{ if $showFullContent }}
-            {{ $pagesRange = (.Paginate $pages).Pages }}
-        {{ end}}
-
-        {{ range $pagesRange }}
-            <div class="post-short-list h-entry">
-                <div class="post-header">
-                    <header>
-                        <h2 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}"><a class="u-url" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h2>
-                        {{ partial "post-language-switcher.html" . }}
-                    </header>
-                </div>
-                {{ if $showFullContent }}
-                    {{ .Content }}
-                {{ end }}
-                {{ partial "post-info.html" . }}
+    {{ range $pagesRange.GroupByParamDate "date" "2006" }}
+    <div class="all-posts-list">
+        <h2 class="all-posts-date">{{ .Key }}</h2>
+        {{ range .Pages }}
+        <div class="post-short-list h-entry all-posts-title">
+            <div class="post-header">
+                <header>
+                    <h2
+                        class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
+                        <a class="u-url" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h2>
+                    {{ partial "post-language-switcher.html" . }}
+                </header>
             </div>
+            {{ if $showFullContent }}
+            {{ .Content }}
+            {{ end }}
+            {{ partial "post-info.html" . }}
+        </div>
         {{ end }}
-        {{ if $showFullContent }}
-            {{ partial "pagination.html" . }}
-        {{ end}}
+        {{ end }}
     </div>
+    {{ if $showFullContent }}
+    {{ partial "pagination.html" . }}
+    {{ end}}
+</div>
 
 {{ end }}

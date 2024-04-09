@@ -4,12 +4,9 @@
         <ul class="post-translations">
             {{ range (sort .AllTranslations ".Lang" "asc" ) }}
                 {{ if eq .Lang $pageLang }}
-                    <li>
-                        {{ upper .Lang }}
-                    </li>
                 {{ else }}
                     <li>
-                        <a href="{{ .Permalink }}">{{ upper .Lang }}</a>
+                        <span class="inline-svg"><a href="{{ .Permalink }}">{{ partial "font-awesome.html" (dict "iconName" "language" "custom" false) }}</a></span>
                     </li>
                 {{ end }}
             {{ end }}

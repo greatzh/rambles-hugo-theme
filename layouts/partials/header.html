@@ -1,30 +1,31 @@
 <div class="header-top">
     <span class="header-top-left">
         {{ partial "site-title.html" . }}
-        <span class="header-top-left-controls">
-            {{ $languagesCount := $.Site.Home.AllTranslations }}
-            {{ if gt $languagesCount 1 }}
-                {{ partial "language-switcher.html" . }}
-            {{ end }}
-            {{ partial "theme-switcher.html" . }} 
-        </span>
+        {{ partial "social.html" . }}
     </span>
     <span class="header-top-right">
-        {{ partial "social.html" . }}
+        <span class="header-top-nav">
+            {{ if .Site.Menus.main }}
+            <ul class="header-top-nav-items">
+                {{ $currentPage := . }}
+                {{ range .Site.Menus.main }}
+                <li><a class="{{if or ($currentPage.IsMenuCurrent " main" .) ($currentPage.HasMenuCurrent "main" .) }}
+                    active{{end}}" href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+            {{ else }}
+            <ul></ul>
+            {{ end }}
+        </span>
+        <span class="header-top-controls">
+            {{ $languagesCount := $.Site.Home.AllTranslations }}
+            {{ if gt $languagesCount 1 }}
+            {{ partial "language-switcher.html" . }}
+            {{ end }}
+            {{ partial "theme-switcher.html" . }}
+        </span>
     </span>
 </div>
 
-{{ if .Site.Menus.main }}
-    <nav>
-        {{ $currentPage := . }}
-        {{ range .Site.Menus.main }}
-        <a class="{{if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} active{{end}}" href="{{ .URL | absLangURL }}" title="{{ .Title }}">{{ .Name }}</a>
-        {{ end }}
-    </nav>
-{{ else }}
-    <nav></nav>
-{{ end }}
-
 {{ if .Site.Params.mathjax }}{{ partial "mathjax_support.html" . }}{{ end }}
-
 {{ partial "header-extra.html" . }}

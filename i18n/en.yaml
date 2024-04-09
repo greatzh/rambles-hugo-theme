@@ -8,10 +8,10 @@ readMore:
   other: "Read more"
 
 toNewPosts:
-  other: "to new posts"
+  other: "Recent post"
 
 toOldPosts:
-  other: "to old posts"
+  other: "Previous post"
 
 tag:
   other: "tag"
@@ -23,7 +23,7 @@ Tags:
   other: "Tags"
 
 Posts:
-  other: "Posts"
+  other: "All Posts"
 
 category:
   other: "category"
@@ -50,10 +50,10 @@ lastMod:
   other: "Last modified:"
 
 toNewPost:
-  other: "to new post"
+  other: "Recent post"
 
 toOldPost:
-  other: "to old post"
+  other: "Previous post"
 
 videoIsNotSupported:
   other: "Your browser does not support video"
@@ -61,20 +61,23 @@ videoIsNotSupported:
 imageLoading:
   other: "The image is loading……"  
 
-reflections:
+Reflections:
   other: "Reflections"
 
-tools:
+Tools:
   other: "Tools"
 
-technews:
+Technews:
   other: "Tech News"
 
-scientificresearch:
+Scientificresearch:
   other: "Scientific Research"
 
-chatgpt:
+Chatgpt:
   other: "ChatGPT"
+
+Yearlyreplay:
+  other: "Yearly Replay"
 
 scroll-hint:
   other: "swipe left/right to view more images"  
