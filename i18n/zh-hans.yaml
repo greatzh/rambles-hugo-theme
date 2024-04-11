@@ -72,3 +72,15 @@ scroll-hint:
 
 aig-summary:
   other: "AI 生成的摘要"  
+
+go-home:
+  other: "回到首页"
+
+404-tip:
+  other: "抱歉，您访问的页面不存在，请检查URL并重试！"
+
+recent-posts:
+  other: "最近文章"
+
+latest:
+  other: "最新的"

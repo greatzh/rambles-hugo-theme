@@ -1,8 +1,21 @@
 {{ define "main"}}
 <main id="main">
+    <div style="padding-bottom: 2em;">
+        <div class="title-bar">
+            <h1 class="title-bar_title">404</h1>
+            <span class="title-bar_divider"></span>
+        </div>
+        <h1 id="title"><a href="{{ .Site.BaseURL | relLangURL }}">{{i18n "go-home"}}</a></h1>
+        {{i18n "404-tip"}}
+    </div>
     <div>
-        <h1 id="title"><a href="{{ .Site.BaseURL | relLangURL }}">Go Home</a></h1>
-        Sorry, this Page is not available.
+        <h2>{{i18n "recent-posts"}}</h2>
+        <div>
+            {{ $pages := where (where site.RegularPages "Type" "in" site.Params.mainSections) "Params.hidden" "!=" true}}
+            {{ range first 3 (.Paginate $pages).Pages }}
+            {{ partial "post-summary.html" . }}
+            {{ end }}
+        </div>
     </div>
 </main>
 {{ end }}

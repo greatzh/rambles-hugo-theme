@@ -1,0 +1,21 @@
+{{ define "main" }}
+    {{ if .Menus }}
+        <nav class="post-navigation">
+        {{ range .Menus }}
+            <a href="{{ .ConfiguredURL | absLangURL }}" title="{{ .Title }}">{{ .Name | markdownify }}</a>
+        {{ end }}
+        </nav>
+    {{ end }}
+
+    <article class="post h-entry">
+        <div class="title-bar">
+            <h1 class="title-bar_title">{{ trim .Title  " " | markdownify }}</h1>
+            <span class="title-bar_divider"></span>
+        </div>
+        <div class="content e-content">
+            {{ .Content }}
+        </div>
+    </article>
+
+    {{ partial "about-footer.html" . }}
+{{ end }}

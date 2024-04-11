@@ -96,10 +96,13 @@
     }
 
     .content.e-content a {
-        border-bottom: 1px solid var(--link-color);
+        color: var(--font-color);
+        text-decoration: underline;
+        text-underline-offset: 4px;
     }
 
     .content.e-content a:hover {
+        color: var(--link-state-color);
         border-bottom: 1px solid var(--link-state-border-color);
     }
 
@@ -242,7 +245,7 @@
     .common-header {
         padding: 1.5em;
         margin: auto;
-        max-width: 1200px;
+        max-width: 1000px;
     }
 
     header a {
@@ -1172,12 +1175,21 @@
         #TableOfContents ul li {
             font-size: 14px;
         }
+        .title-bar {
+            grid-template-areas: "title title title title title divider divider divider divider divider divider divider";
+        }
+        .title-bar_title {
+            font-size: 60px;
+        }
     }
 
     @media (min-width: 2048px) {
         .container {
             max-width: 60em;
             position: relative;
+        }
+        .common-header {
+            max-width: 1200px;
         }
     }
 

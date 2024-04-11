@@ -84,3 +84,15 @@ scroll-hint:
 
 aig-summary:
   other: "AI-generated summary"  
+
+go-home:
+  other: "Go Home"
+
+404-tip:
+  other: "Sorry, The page you are looking for is not available currently. Please check the URL and try again."
+
+recent-posts:
+  other: "Recent Posts"
+
+latest:
+  other: "Latest"
