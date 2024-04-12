@@ -843,6 +843,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         max-width: 16em;
+        padding: 0.75em 0.75em;
     }
 
     /* Footer */

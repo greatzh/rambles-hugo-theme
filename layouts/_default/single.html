@@ -21,6 +21,10 @@
             {{ .Content }}
         </div>
         {{ partial "post-info.html" . }}
+        <div style="display: flex; justify-content: center;">
+            <emoji-reaction endpoint="https://emaction.api.imzh.me"></emoji-reaction>
+        </div>
+
     </article>
 
     {{ if gt .Site.Params.readNextPosts 0 }}
@@ -42,4 +46,5 @@
     {{ if not .Params.disableComments }}
         {{ partial "comments.html" . }}
     {{ end }}
+    <script type="module" src="https://cdn.jsdelivr.net/gh/emaction/frontend.dist@1.0.7/bundle.js"></script>
 {{ end }}
