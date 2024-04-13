@@ -1028,7 +1028,12 @@
         margin-bottom: 0;
     }
 
+    @font-face {
+        font-family: "DS-DIGIB";
+        src: url('/fonts/DS-DIGIB.TTF') format('truetype');
+    }
 
+    
     /* Media Queries */
 
     @media (max-width: 840px) {

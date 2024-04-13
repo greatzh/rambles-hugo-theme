@@ -1,50 +1,61 @@
 {{ define "main" }}
-    {{ if .Menus }}
-        <nav class="post-navigation">
-        {{ range .Menus }}
-            <a href="{{ .ConfiguredURL | absLangURL }}" title="{{ .Title }}">{{ .Name | markdownify }}</a>
-        {{ end }}
-        </nav>
+{{ if .Menus }}
+<nav class="post-navigation">
+    {{ range .Menus }}
+    <a href="{{ .ConfiguredURL | absLangURL }}" title="{{ .Title }}">{{ .Name | markdownify }}</a>
     {{ end }}
+</nav>
+{{ end }}
 
-    <article class="post h-entry">
-        <div class="post-header">
-            <header>
-                <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{ trim .Title  " " | markdownify }}</h1>
+<article class="post h-entry">
+    <div class="post-header">
+        <header>
+            <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{
+                trim .Title " " | markdownify }}</h1>
 
-                {{ partial "post-language-switcher.html" . }}
-            </header>
-        </div>
-        {{ partial "post-info.html" . }}
-        {{ partial "toc.html" .}}
-        <div class="content e-content">
-            {{ .Content }}
-        </div>
-        {{ partial "post-info.html" . }}
-        <div style="display: flex; justify-content: center;">
-            <emoji-reaction endpoint="https://emaction.api.imzh.me"></emoji-reaction>
-        </div>
+            {{ partial "post-language-switcher.html" . }}
+        </header>
+    </div>
+    {{ partial "post-info.html" . }}
+    {{ partial "toc.html" .}}
+    <div class="content e-content">
+        {{ .Content }}
+    </div>
+    {{ partial "post-info.html" . }}
+    <div style="display: flex; justify-content: center; font-family: 'DS-DIGIB', sans-serif; margin-top: 20px;">
+        <style>
+            .container {
+              --reaction-got-not-reacted-bg-color: var(--color-bg-secondary);
+              --reaction-got-not-reacted-bg-color-hover: var(--color-bg-secondary-hover);
+              --reaction-got-not-reacted-text-color: var(--color-text-secondary);
+              --reaction-got-reacted-bg-color: var(--color-bg2-secondary-hover);
+              --reaction-got-reacted-bg-color-hover: var(--color-bg2-secondary-hover);
+              --reaction-got-reacted-text-color: var(--color-text2-secondary);
+            }
+          </style>
+        <emoji-reaction endpoint="https://emaction.api.imzh.me"></emoji-reaction>
+    </div>
 
-    </article>
+</article>
 
-    {{ if gt .Site.Params.readNextPosts 0 }}
-        {{ $related := .Site.RegularPages.Related . | first .Site.Params.readNextPosts }}
-        {{ with $related }}
-            <h3 class="read-next-title">{{ i18n "readNext" }}</h3>
-            <ul class="read-next-posts">
-                {{ range . }}
-                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-                {{ end }}
-            </ul>
-        {{ end }}
+{{ if gt .Site.Params.readNextPosts 0 }}
+{{ $related := .Site.RegularPages.Related . | first .Site.Params.readNextPosts }}
+{{ with $related }}
+<h3 class="read-next-title">{{ i18n "readNext" }}</h3>
+<ul class="read-next-posts">
+    {{ range . }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
     {{ end }}
+</ul>
+{{ end }}
+{{ end }}
 
-    {{ if and (.Site.Params.paginationSinglePost) (ne .Type "page") }}
-        {{ partial "post-pagination.html" . }}
-    {{ end }}
+{{ if and (.Site.Params.paginationSinglePost) (ne .Type "page") }}
+{{ partial "post-pagination.html" . }}
+{{ end }}
 
-    {{ if not .Params.disableComments }}
-        {{ partial "comments.html" . }}
-    {{ end }}
-    <script type="module" src="https://cdn.jsdelivr.net/gh/emaction/frontend.dist@1.0.7/bundle.js"></script>
+{{ if not .Params.disableComments }}
+{{ partial "comments.html" . }}
+{{ end }}
+<script type="module" src="https://cdn.jsdelivr.net/gh/jz1998/counthit@master/hit-counter@1.3.1.js"></script>
 {{ end }}
