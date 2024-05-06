@@ -1,15 +1,16 @@
 <article class="post-list h-feed">
-    {{ partial "post-date.html" . }}
     <div class="post-content">
         <div class="post-header">
             <header>
-                <h1
-                    class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
-                    <a class="u-url" href="{{ .RelPermalink }}">{{ trim .Title " " | markdownify }}</a></h1>
+                <p
+                    class="p-name post-title-remark{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
+                    <a class="u-url" href="{{ .RelPermalink }}">#{{ trim .Title " " | markdownify }}
+                        {{ if .Params.remark }}  {{ .Params.remark }}{{ end }}
+                    </a></p>
             </header>
             {{ partial "post-language-switcher.html" . }}
         </div>
-
+        {{ partial "post-date.html" . }}
         {{ if not .Site.Params.disableSummary }}
         <div class="content post-summary p-summary">
             {{ .Summary | safeHTML }}

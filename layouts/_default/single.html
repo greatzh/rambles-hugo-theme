@@ -10,7 +10,7 @@
 <article class="post h-entry">
     <div class="post-header">
         <header>
-            <h1 class="p-name post-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{
+            <h1 class="p-name post-title-remark{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{
                 trim .Title " " | markdownify }}</h1>
 
             {{ partial "post-language-switcher.html" . }}
@@ -21,7 +21,6 @@
     <div class="content e-content">
         {{ .Content }}
     </div>
-    {{ partial "post-info.html" . }}
     <div style="display: flex; justify-content: center; font-family: 'DS-DIGIB', sans-serif; margin-top: 20px;">
         <style>
             .container {
@@ -57,5 +56,4 @@
 {{ if not .Params.disableComments }}
 {{ partial "comments.html" . }}
 {{ end }}
-<script type="module" src="https://cdn.jsdelivr.net/gh/jz1998/counthit@master/hit-counter@1.3.1.js"></script>
 {{ end }}

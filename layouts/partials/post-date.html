@@ -6,9 +6,9 @@
 
 {{ if .Params.date }}
 <div class="post-card-date dt-published">
-    <a class="u-url" href="{{ .RelPermalink }}"><time datetime="{{ .Params.date.Format $machineDateFormat }}">
+    <time datetime="{{ .Params.date.Format $machineDateFormat }}">
             {{- .Params.date.Format $dateFormat -}}
-        </time></a>
+        </time>
     {{ if ne .Params.date .Params.lastMod -}}
     [{{ i18n "lastMod" }} <time datetime="{{ .Params.lastMod.Format $machineDateFormat }}">
         {{- .Params.lastMod.Format $dateFormat -}}
