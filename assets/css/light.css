@@ -1,6 +1,11 @@
 :root {
     /* light.css */
     --font-color: #333;
+    --first-class-color: #434343;
+    --second-class-color: #595959;
+    --forbidden-class-color: #8c8c8c;
+    --first-class-border-color: #D9D9D9FF;
+    --divider-color: #0505050F;
     --bg-color: #fff;
 
     --link-color: #1d60a3;
@@ -41,4 +46,5 @@
     --color-bg2-secondary-hover: #b6e3ff;
     --color-text2-secondary: #0969da;
 
+    --shadow-color: #b5f5ec;
 }

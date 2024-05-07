@@ -216,9 +216,9 @@
     }
 
     p {
-        margin-top: 1.5em;
-        margin-bottom: 1.5em;
-        font: 400 18px/1.95 ibm plex mono,monospace;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        font: 400 18px/1.5 ibm plex mono,monospace;
 
     }
 
@@ -877,6 +877,7 @@
     .theme-switcher {
         cursor: pointer;
         display: inline;
+        margin-left: 10px;
     }
 
     .theme-switcher-svg {

@@ -18,11 +18,11 @@
             {{ end }}
         </span>
         <span class="header-top-controls">
+            {{ partial "theme-switcher.html" . }}
             {{ $languagesCount := $.Site.Home.AllTranslations }}
             {{ if gt $languagesCount 1 }}
             {{ partial "language-switcher.html" . }}
             {{ end }}
-            {{ partial "theme-switcher.html" . }}
         </span>
     </span>
 </div>

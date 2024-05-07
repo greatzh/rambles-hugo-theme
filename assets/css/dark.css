@@ -1,5 +1,10 @@
 /* dark.css */ 
 --font-color: #eee;
+--first-class-color: #f0f0f0;
+--second-class-color: #d9d9d9;
+--forbidden-class-color: #bfbfbf;
+--first-class-border-color: #424242FF;
+--divider-color: #FDFDFD1F;
 --bg-color: #212121;
 
 --link-color:#599ada;
@@ -39,3 +44,5 @@
 --color-bg2-secondary: #388bfd1a;
 --color-bg2-secondary-hover: #0c2d6b;
 --color-text2-secondary: #2f81f7;
+
+--shadow-color: #00474f;

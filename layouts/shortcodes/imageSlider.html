@@ -5,4 +5,6 @@
     {{ end }}
 </div>
 <p class="scroll-hint">{{ i18n "scroll-hint" }}</p>
-<figcaption>{{ .Params.caption | markdownify }}</figcaption>
+{{ with .Params.caption }}
+    <figcaption>{{ . | markdownify }}</figcaption>
+{{ end }}

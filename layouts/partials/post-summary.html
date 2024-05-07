@@ -12,8 +12,8 @@
         </div>
         {{ partial "post-date.html" . }}
         {{ if not .Site.Params.disableSummary }}
-        <div class="content post-summary p-summary">
-            {{ .Summary | safeHTML }}
+        <div class="content e-content">
+            {{ .Content }}
         </div>
         {{ end }}
         {{ if and (.Truncated) (.Site.Params.readMore) }}
