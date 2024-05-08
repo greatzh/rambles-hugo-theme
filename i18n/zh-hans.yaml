@@ -67,6 +67,15 @@ Chatgpt:
 Yearlyreplay:
   other: "年度回顾"
 
+Image:
+  other: "图片"
+
+Video:
+  other: "视频"
+
+Audio:
+  other: "声音"
+
 scroll-hint:
   other: "左右滑动查看更多图片"
 

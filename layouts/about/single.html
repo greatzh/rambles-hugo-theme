@@ -7,13 +7,16 @@
         </nav>
     {{ end }}
 
-    <article class="post h-entry">
-        <div class="title-bar">
-            <h1 class="title-bar_title">{{ trim .Title  " " | markdownify }}</h1>
-            <span class="title-bar_divider"></span>
-        </div>
+    <article class="post h-entry post-single">
         <div class="content e-content">
             {{ .Content }}
         </div>
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts")}}
+        {{ $pages = where $pages "Params.hidden" "!=" true }}
+        {{ $totalWords := 0 }}
+        {{ range $pages }}
+            {{ $totalWords = add $totalWords (countwords .Content) }}
+        {{ end }}
+        一些统计数据，截至 {{ now.Format "2006-01-02 15:04" }}，共 {{ len $pages }} 条碎碎念，总字数约为 {{ $totalWords }}。
     </article>
 {{ end }}

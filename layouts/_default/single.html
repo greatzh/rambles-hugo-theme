@@ -7,34 +7,21 @@
 </nav>
 {{ end }}
 
-<article class="post h-entry">
+<article class="post h-entry post-single">
     <div class="post-header">
         <header>
-            <h1 class="p-name post-title-remark{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">{{
-                trim .Title " " | markdownify }}</h1>
-
-            {{ partial "post-language-switcher.html" . }}
+            <p
+                class="p-name post-title-remark-single {{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
+                #{{ trim .Title " " | markdownify }}
+                    {{ if .Params.remark }}  {{ .Params.remark }}{{ end }}
+                </p>
         </header>
     </div>
     {{ partial "post-info.html" . }}
     {{ partial "toc.html" .}}
-    <div class="content e-content">
+    <div class="content e-content single-content">
         {{ .Content }}
     </div>
-    <div style="display: flex; justify-content: center; font-family: 'DS-DIGIB', sans-serif; margin-top: 20px;">
-        <style>
-            .container {
-              --reaction-got-not-reacted-bg-color: var(--color-bg-secondary);
-              --reaction-got-not-reacted-bg-color-hover: var(--color-bg-secondary-hover);
-              --reaction-got-not-reacted-text-color: var(--color-text-secondary);
-              --reaction-got-reacted-bg-color: var(--color-bg2-secondary-hover);
-              --reaction-got-reacted-bg-color-hover: var(--color-bg2-secondary-hover);
-              --reaction-got-reacted-text-color: var(--color-text2-secondary);
-            }
-          </style>
-        <emoji-reaction endpoint="https://emaction.api.imzh.me"></emoji-reaction>
-    </div>
-
 </article>
 
 {{ if gt .Site.Params.readNextPosts 0 }}
@@ -49,8 +36,8 @@
 {{ end }}
 {{ end }}
 
-{{ if and (.Site.Params.paginationSinglePost) (ne .Type "page") }}
-{{ partial "post-pagination.html" . }}
+{{ if or (.Site.Params.paginationSinglePost) (ne .Type "page") }}
+    {{ partial "post-pagination.html" . }}
 {{ end }}
 
 {{ if not .Params.disableComments }}

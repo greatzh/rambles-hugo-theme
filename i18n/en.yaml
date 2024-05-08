@@ -79,6 +79,15 @@ Chatgpt:
 Yearlyreplay:
   other: "Yearly Replay"
 
+image:
+  other: "Images"
+
+video:
+  other: "Videos"
+
+audio:
+  other: "Audios"
+
 scroll-hint:
   other: "swipe left/right to view more images"  
 

@@ -9,13 +9,13 @@
     --bg-color: #fff;
 
     --link-color: #1d60a3;
-    --link-state-color: #08979c;
-    --link-state-border-color: #08979c;
+    --link-state-color: #096dd9;
+    --link-state-border-color: #096dd9;
 
     --thead-bg-color: lightgrey;
     --table-border-color: lightgrey;
 
-    --nav-bg-color: #13c2c2;
+    --nav-bg-color: #1890ff;
     --nav-link-color: #ffffff;
 
     --pre-color: #333;
@@ -24,7 +24,7 @@
     --bq-color: #ccc;
     --hr-color: #ccc;
 
-    --pagination-bg-color: #13c2c2;
+    --pagination-bg-color: #1890ff;
     --pagination-link-color: #ffffff;
 
     --post-info-color: grey;
@@ -33,7 +33,7 @@
     --switcher-bg-color: #333;
 
     --svg-color: #333;
-    --svg-state-color: #13c2c2;
+    --svg-state-color: #1890ff;
 
     --language-selected: grey;
 

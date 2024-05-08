@@ -1,15 +1,23 @@
-{{ if or ( .PrevInSection ) ( .NextInSection ) }}
+{{ if or ( .Prev ) ( .Next ) }}
     {{ $toNewPostMessage := i18n "toNewPost" }}
     {{ $toOldPostMessage := i18n "toOldPost" }}
     <div class="pagination post-pagination">
-        <div class="left pagination-item {{ if not .NextInSection }}disabled{{ end }}">
-            {{ if .NextInSection }}
-                <a href="{{ .NextInSection.RelPermalink }}">{{ .NextInSection.Title | default $toNewPostMessage | markdownify }}</a>
+        <div class="left pagination-item {{ if not .Next }}disabled{{ end }}">
+            {{ if .Next }}
+                <a href="{{ .Next.RelPermalink }}">
+                    <p>最近 Recent</p>
+                    <h3>#{{ .Next.Title | default $toNewPostMessage | markdownify }} {{ .Next.Params.remark }}</h3>
+                    <p>{{ .Next.Content | truncate 50 }}</p>
+                </a>
             {{ end }}
         </div>
-        <div class="right pagination-item {{ if not .PrevInSection }}disabled{{ end }}">
-            {{ if .PrevInSection }}
-                <a href="{{ .PrevInSection.RelPermalink }}">{{ .PrevInSection.Title | default $toOldPostMessage | markdownify }}</a>
+        <div class="right pagination-item {{ if not .Prev }}disabled{{ end }}">
+            {{ if .Prev }}
+                <a href="{{ .Prev.RelPermalink }}">
+                    <p>更早 Previous</p>
+                    <h3>#{{ .Prev.Title | default $toOldPostMessage | markdownify }} {{ .Prev.Params.remark }}</h3>
+                    <p>{{ .Prev.Content | truncate 50 }}</p>
+                </a>
             {{ end }}
         </div>
     </div>

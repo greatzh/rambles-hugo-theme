@@ -8,13 +8,13 @@
 --bg-color: #212121;
 
 --link-color:#599ada;
---link-state-color:#36cfc9;
---link-state-border-color: #36cfc9;
+--link-state-color:#40a9ff;
+--link-state-border-color: #40a9ff;
 
 --thead-bg-color: #343a40;
 --table-border-color: lightgrey;
 
---nav-bg-color: #242424;
+--nav-bg-color: #1890ff;
 --nav-link-color: #b6b6b6;
 
 --pre-color: #f8f8f2;
@@ -23,7 +23,7 @@
 --bq-color: #ccc;
 --hr-color: #333;
 
---pagination-bg-color: #373737;
+--pagination-bg-color: #1890ff;
 --pagination-link-color: #b6b6b6;
 
 --post-info-color: grey;
@@ -32,7 +32,7 @@
 --switcher-bg-color: #fff;
 
 --svg-color: #ccc;
---svg-state-color:#ff5858;
+--svg-state-color:#1890ff;
 
 --language-selected: grey;
 

@@ -3,11 +3,8 @@
     {{ .Content }}
 </div>
 
-<div class="articles h-feed">
-    <div class="title-bar">
-        <h1 class="title-bar_title">{{ i18n .Title | markdownify }}</h1>
-        <span class="title-bar_divider"></span>
-    </div>
+<div class="articles h-feed post-single">
+    <h1 class="title-bar_title">{{ i18n .Title | markdownify }}</h1>
     {{ $showFullContent := in .Site.Params.sectionsWithFullContentOnListPage .Section }}
     {{ $pages := where .Pages "Params.hidden" "!=" true}}
 

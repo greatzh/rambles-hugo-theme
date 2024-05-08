@@ -95,6 +95,10 @@
         border-bottom: 1px solid transparent;
     }
 
+    .content.e-content.single-content p {
+        font: 400 19.2px / 1.75 ibm plex mono, monospace;
+    }
+
     .content.e-content a {
         color: var(--font-color);
         text-decoration: underline;
@@ -110,7 +114,7 @@
     a:focus,
     a:active {
         color: var(--link-state-color);
-        border-bottom: 1px solid var(--link-state-border-color);
+        border-bottom: 2px solid var(--link-state-border-color);
     }
 
     a:active,
@@ -453,6 +457,12 @@
         margin-bottom: 0;
         font: 403 17px / 1.75 Georgia, Xin Gothic, PingFang SC, Hiragino Sans GB, Droid Sans Fallback, Microsoft YaHei, sans-serif;
     }
+    .post-title-remark-single {
+        margin-top: 0;
+        margin-bottom: 0;
+        color: var(--link-state-color);
+        font: 900 1.6rem / 1.75 Georgia, Xin Gothic, PingFang SC, Hiragino Sans GB, Droid Sans Fallback, Microsoft YaHei, sans-serif;
+    }
 
     article:not(:last-of-type) {
         /* border-bottom: thin solid var(--hr-color); */
@@ -471,6 +481,15 @@
         color: var(--font-color);
         border: none;
         text-decoration: none;
+    }
+
+    .post-single {
+        align-items: center;
+        max-width: 100%;
+        margin-top: 10vw;
+        margin-bottom: 15vw;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .post h1,
@@ -609,7 +628,10 @@
     }
 
     .post-date {
+        font-size: 18px;
+        line-height: 1.5;
         white-space: nowrap;
+        color: var(--post-info-color);
     }
 
     .post-categories {
@@ -737,27 +759,15 @@
     }
 
     /* Other pages */
-    .title-bar {
-        display: grid;
-        margin-bottom: 32px;
-        padding: 24px 0;
-        align-items: center;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-areas: "title title title divider divider divider divider divider divider divider divider divider";
-    }
     .title-bar_title {
-        grid-area: title;
-        font-size: 32px;
+        margin-top: 1rem;
+        font-size: 24px;
         line-height: 20px;
-        font-weight: 600;
+        font-weight: 900;
         white-space: nowrap;
         margin: auto 0;
     }
-    .title-bar_divider {
-        grid-area: divider;
-        height: 2px;
-        background-color: var(--font-color);
-    }
+
     .terms {
         list-style-type: none;
         padding: 0;
@@ -794,23 +804,32 @@
     .pagination {
         display: flex;
         justify-content: space-between;
-        margin-top: 3em;
+        margin: 4rem 0;
         text-align: center;
     }
 
     .pagination-item {
+        display: flex;
+        flex: 1;
+        justify-content: center;
         padding: 0;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
     }
 
     .pagination-item a {
-        color: var(--pagination-link-color);
-        background: var(--pagination-bg-color);
-        padding: 0.75em 0.75em;
+        font-size: larger;
+        color: var(--pagination-bg-color);
+        background: transparent;
+        padding: 1rem;
+        width: 100%;
+        transition: all .2s ease-in-out;
     }
 
     .pagination-item a:hover,
     .pagination-item a:focus {
-        color: var(--link-state-color);
+        color: var(--bg-color);
+        background: var(--pagination-bg-color);
     }
 
     .disabled {
@@ -825,9 +844,8 @@
     .post-pagination .pagination-item {
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
-        max-width: 16em;
-        padding: 0.75em 0.75em;
+        padding: 1rem;
+        word-wrap: break-word;
     }
 
     /* Footer */
@@ -1041,6 +1059,10 @@
             margin: auto;
             max-width: 90%;
         }
+        
+        .pagination {
+            flex-direction: column-reverse;
+        }
 
         .pagination-item {
             padding: 0.5em 0.5em;
@@ -1058,7 +1080,7 @@
         }
 
         .post-pagination .pagination-item {
-            max-width: 10em;
+            width: 90%;
         }
 
         .header-top-controls {
@@ -1168,9 +1190,6 @@
         }
         .title-bar {
             grid-template-areas: "title title title title title divider divider divider divider divider divider divider";
-        }
-        .title-bar_title {
-            font-size: 60px;
         }
     }
 

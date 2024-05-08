@@ -4,8 +4,10 @@
     </div>
 
     <div class="articles h-feed">
-        {{ $pages := where site.RegularPages "Section" "not in" (slice "about" "aura" "posts") }}
-        {{ range (.Paginate $pages).Pages }}
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts") }}
+        {{ $pages = where $pages "Params.hidden" "!=" true }}
+        {{ $paginator := .Paginate $pages }}
+        {{ range $paginator.Pages }}
             {{ partial "post-summary.html" . }}
         {{ end }}
         {{ partial "pagination.html" . }}

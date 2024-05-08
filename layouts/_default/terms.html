@@ -3,15 +3,14 @@
     {{ .Content }}
 </div>
 
-<div class="title-bar">
-    <h1 class="title-bar_title">{{ i18n .Title | markdownify }}</h1>
-    <span class="title-bar_divider"></span>
-</div>
+<div class="post-single">
+<h1 class="title-bar_title" >{{ i18n .Title | markdownify }}</h1>
+
 <ul class="terms tag-grid">
     {{ range .Data.Terms }}
     {{ $postsNum := len (where .Pages "Params.hidden" "!=" true) }}
     {{ if gt $postsNum 0 }}
-    <li>
+    <li style="color: var(--bg-color);">
         <a href="{{ .Page.RelPermalink }}">
             <div>
                 {{ i18n .Page.Title | markdownify }}
@@ -22,5 +21,5 @@
     {{ end}}
     {{ end }}
 </ul>
-
+</div>
 {{ end }}
