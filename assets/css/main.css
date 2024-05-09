@@ -387,14 +387,14 @@
         max-width: 100%;
         display: block;
         height: auto;
-        margin: 0 auto .5em;
+        margin: 0 auto .3em;
     }
 
     .post-short-list video {
         max-width: 100%;
         display: block;
         height: auto;
-        margin: 0 auto .5em;
+        margin: 0 auto .3em;
     }
 
     /* Articles */
@@ -643,6 +643,7 @@
     .post-categories li {
         display: inline;
         margin-right: 1em;
+        font-size: 15px;
     }
 
     .post-tags {
@@ -674,7 +675,7 @@
         max-width: 90%;
         display: block;
         height: auto;
-        margin: 0 auto .5em;
+        margin: 0 auto .3em;
         border-radius: 10px;
     }
 
@@ -682,14 +683,13 @@
         color: grey;
         text-align: center;
         font-size: 0.85em;
-        margin-bottom: 2em;
     }
 
     article video {
         max-width: 100%;
         display: block;
         height: auto;
-        margin: 0 auto .5em;
+        margin: 0 auto .3em;
     }
 
     code.has-jax {
@@ -813,8 +813,15 @@
         flex: 1;
         justify-content: center;
         padding: 0;
+    }
+
+    .left.pagination-item {
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
+    }
+    .right.pagination-item {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
 
     .pagination-item a {
@@ -844,7 +851,6 @@
     .post-pagination .pagination-item {
         overflow: hidden;
         text-overflow: ellipsis;
-        padding: 1rem;
         word-wrap: break-word;
     }
 
@@ -994,6 +1000,11 @@
         /* 保持图片比例 */
     }
 
+    .image-container.single-image {
+        overflow: visible;
+        width: 60%; /* Adjust this value as needed */
+    }
+
     .scroll-hint {
         display: none;
     }
@@ -1060,7 +1071,7 @@
             max-width: 90%;
         }
         
-        .pagination {
+        .post-pagination {
             flex-direction: column-reverse;
         }
 
@@ -1135,6 +1146,10 @@
             /* 保持图片比例 */
             margin-right: 10px;
             /* 设置图片之间的间距 */
+        }
+
+        .image-container.single-image {
+            width: 90%; /* Adjust this value as needed */
         }
 
         .scroll-hint {

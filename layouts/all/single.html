@@ -1,0 +1,54 @@
+{{ define "main" }}
+    <div class="homepage-content">
+        {{ .Content }}
+    </div>
+
+    <div style="cursor: pointer;" onclick="toggleAllGroups()">全部展开/全部收起</div>
+
+    <div class="articles h-feed">
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all") }}
+        {{ $pages = where $pages "Params.hidden" "!=" true }}
+        {{ $pagesByYear := $pages.GroupByDate "2006" }}
+        {{ range $pagesByYear }}
+            <h2 class="year-group" onclick="toggleGroup(this)">
+                {{ .Key }} ({{ len .Pages }})
+            </h2>
+            <div class="months-group" style="display: none;">
+                {{ $pagesByMonth := .Pages.GroupByDate "Jan" }}
+                {{ range $pagesByMonth }}
+                    <h3 class="month-group" onclick="toggleGroup(this)" style="margin-left: 10px;">
+                        {{ .Key }} ({{ len .Pages }})
+                    </h3>
+                    <div class="pages-group" style="display: none; margin-left: 20px;">
+                        {{ range .Pages }}
+                            {{ partial "post-summary.html" . }}
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
+
+    <script>
+        function toggleGroup(element) {
+            var pagesGroup = element.nextElementSibling;
+            if (pagesGroup.style.display === "none") {
+                pagesGroup.style.display = "block";
+            } else {
+                pagesGroup.style.display = "none";
+            }
+        }
+
+        function toggleAllGroups() {
+            var groups = document.querySelectorAll('.months-group, .pages-group');
+            for (var i = 0; i < groups.length; i++) {
+                if (groups[i].style.display === "none") {
+                    groups[i].style.display = "block";
+                } else {
+                    groups[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+{{ end }}

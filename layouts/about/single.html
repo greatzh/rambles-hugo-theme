@@ -11,7 +11,7 @@
         <div class="content e-content">
             {{ .Content }}
         </div>
-        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts")}}
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all")}}
         {{ $pages = where $pages "Params.hidden" "!=" true }}
         {{ $totalWords := 0 }}
         {{ range $pages }}
@@ -19,4 +19,8 @@
         {{ end }}
         一些统计数据，截至 {{ now.Format "2006-01-02 15:04" }}，共 {{ len $pages }} 条碎碎念，总字数约为 {{ $totalWords }}。
     </article>
+    <p style="text-align: center; font-size: 24px; font-weight: 800;">留言板 Leave a Message</p>
+    {{ if not .Params.disableComments }}
+        {{ partial "comments.html" . }}
+    {{ end }}
 {{ end }}

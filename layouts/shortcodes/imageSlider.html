@@ -1,10 +1,12 @@
-<div class="image-container">
-    {{ $images := split .Params.images " " }}
+{{ $images := split .Params.images " " }}
+<div class="image-container{{ if eq (len $images) 1 }} single-image{{ end }}">
     {{ range $images }}
         <img src="{{ . | safeURL }}" alt="">
     {{ end }}
 </div>
-<p class="scroll-hint">{{ i18n "scroll-hint" }}</p>
+{{ if gt (len $images) 1 }}
+    <p class="scroll-hint">{{ i18n "scroll-hint" }}</p>
+{{ end }}
 {{ with .Params.caption }}
     <figcaption>{{ . | markdownify }}</figcaption>
 {{ end }}
