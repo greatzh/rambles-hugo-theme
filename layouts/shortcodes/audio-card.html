@@ -39,91 +39,6 @@
     </div>
 </div>
 
-<script>
-  var urls = "{{ .Get "urls" }}".split(", ");
-  var audioPlayer = document.getElementById('{{ $id }}');
-  var playPauseButton = document.getElementById('playPauseButton');
-  var playPauseIcon = document.getElementById('playPauseIcon');
-  var loopButton = document.getElementById('loopButton');
-  var loopIcon = document.getElementById('loopIcon');
-  var timeDisplay = document.getElementById('timeDisplay');
-  var progressBar = document.getElementById('progressBar');
-
-  playPauseButton.onclick = function () {
-      if (audioPlayer.paused) {
-          audioPlayer.play();
-      } else {
-          audioPlayer.pause();
-      }
-  };
-
-  
-  audioPlayer.ontimeupdate = function () {
-      if (audioPlayer.paused) {
-          playIcon.style.display = '';
-          pauseIcon.style.display = 'none';
-      } else {
-          playIcon.style.display = 'none';
-          pauseIcon.style.display = '';
-      }
-  };
-
-  loopButton.onclick = function () {
-      if (audioPlayer.loop) {
-          audioPlayer.loop = false;
-          loopOnIcon.style.display = 'none';
-          loopOffIcon.style.display = '';
-      } else {
-          audioPlayer.loop = true;
-          loopOnIcon.style.display = '';
-          loopOffIcon.style.display = 'none';
-      }
-  };
-
-  progressBar.oninput = function () {
-      audioPlayer.currentTime = audioPlayer.duration * (progressBar.value / 100);
-  };
-
-  function updateDisplay() {
-      var minutes = Math.floor(audioPlayer.currentTime / 60);
-      var seconds = Math.floor(audioPlayer.currentTime % 60);
-      var durationMinutes = Math.floor(audioPlayer.duration / 60);
-      var durationSeconds = Math.floor(audioPlayer.duration % 60);
-  
-      // Use padStart to ensure the minutes and seconds are always two digits
-      var formattedMinutes = String(minutes).padStart(2, '0');
-      var formattedSeconds = String(seconds).padStart(2, '0');
-      var formattedDurationMinutes = String(durationMinutes).padStart(2, '0');
-      var formattedDurationSeconds = String(durationSeconds).padStart(2, '0');
-  
-      timeDisplay.textContent = formattedMinutes + ':' + formattedSeconds + ' / ' + formattedDurationMinutes + ':' + formattedDurationSeconds;
-      progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  }
-  
-  setInterval(updateDisplay, 1000);
-
-  function tryNextUrl() {
-      if (urls.length === 0) {
-          console.error('No valid audio URL found.');
-          return;
-      }
-
-      var url = urls.shift();
-      audioPlayer.src = url;
-
-      audioPlayer.onerror = function () {
-          console.error('Failed to load audio from URL: ' + url);
-          tryNextUrl();
-      };
-
-      audioPlayer.oncanplay = function () {
-          playIcon.style.display = '';
-          pauseIcon.style.display = 'none';
-      };
-  }
-
-  tryNextUrl();
-</script>
 
 
 <style>
@@ -319,5 +234,90 @@
     }
   
   }
-  </style>
+</style>
+
+<script>
+  var urls = "{{ .Get "urls" }}".split(", ");
+  var audioPlayer = document.getElementById('{{ $id }}');
+  var playPauseButton = document.getElementById('playPauseButton');
+  var playPauseIcon = document.getElementById('playPauseIcon');
+  var loopButton = document.getElementById('loopButton');
+  var loopIcon = document.getElementById('loopIcon');
+  var timeDisplay = document.getElementById('timeDisplay');
+  var progressBar = document.getElementById('progressBar');
+
+  playPauseButton.onclick = function () {
+      if (audioPlayer.paused) {
+          audioPlayer.play();
+      } else {
+          audioPlayer.pause();
+      }
+  };
+
   
+  audioPlayer.ontimeupdate = function () {
+      if (audioPlayer.paused) {
+          playIcon.style.display = '';
+          pauseIcon.style.display = 'none';
+      } else {
+          playIcon.style.display = 'none';
+          pauseIcon.style.display = '';
+      }
+  };
+
+  loopButton.onclick = function () {
+      if (audioPlayer.loop) {
+          audioPlayer.loop = false;
+          loopOnIcon.style.display = 'none';
+          loopOffIcon.style.display = '';
+      } else {
+          audioPlayer.loop = true;
+          loopOnIcon.style.display = '';
+          loopOffIcon.style.display = 'none';
+      }
+  };
+
+  progressBar.oninput = function () {
+      audioPlayer.currentTime = audioPlayer.duration * (progressBar.value / 100);
+  };
+
+  function updateDisplay() {
+      var minutes = Math.floor(audioPlayer.currentTime / 60);
+      var seconds = Math.floor(audioPlayer.currentTime % 60);
+      var durationMinutes = Math.floor(audioPlayer.duration / 60);
+      var durationSeconds = Math.floor(audioPlayer.duration % 60);
+  
+      // Use padStart to ensure the minutes and seconds are always two digits
+      var formattedMinutes = String(minutes).padStart(2, '0');
+      var formattedSeconds = String(seconds).padStart(2, '0');
+      var formattedDurationMinutes = String(durationMinutes).padStart(2, '0');
+      var formattedDurationSeconds = String(durationSeconds).padStart(2, '0');
+  
+      timeDisplay.textContent = formattedMinutes + ':' + formattedSeconds + ' / ' + formattedDurationMinutes + ':' + formattedDurationSeconds;
+      progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  }
+  
+  setInterval(updateDisplay, 1000);
+
+  function tryNextUrl() {
+      if (urls.length === 0) {
+          console.error('No valid audio URL found.');
+          return;
+      }
+
+      var url = urls.shift();
+      audioPlayer.src = url;
+
+      audioPlayer.onerror = function () {
+          console.error('Failed to load audio from URL: ' + url);
+          tryNextUrl();
+      };
+
+      audioPlayer.oncanplay = function () {
+          playIcon.style.display = '';
+          pauseIcon.style.display = 'none';
+      };
+  }
+
+  tryNextUrl();
+</script>
