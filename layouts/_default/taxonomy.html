@@ -4,9 +4,9 @@
         <a href="{{ (print .Data.Plural "/") | relLangURL }}">{{ i18n (printf "toAll%s" (.Data.Plural | humanize )) | humanize }}</a>
     </div>
     {{ $pages := where .Pages "Params.hidden" "!=" true }}
-    {{ range (.Paginate $pages).Pages }}
+    {{ $paginate := index .Site.Params.taxonomyPaginate .Data.Singular }}
+    {{ range (.Paginate $pages $paginate).Pages }}
         {{ partial "post-summary.html" . }}
     {{ end }}
     {{ partial "pagination.html" . }}
-
 {{ end }}

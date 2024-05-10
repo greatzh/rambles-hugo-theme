@@ -1,323 +1,146 @@
 {{ $urls := split (.Get "urls") ", " }}
+{{ $id := printf "audio-%s" (.Get "arid") }}
+
 <div class="audio-card">
-    <div class="background" style="background-image: url('{{ .Get "audioCover" }}');"></div>    
-    <div class="player-album-cover">
-        <img src="{{ .Get "audioCover" }}" alt="{{ .Get "alt" }}" />
-    </div>
+  <div class="background" style="background-image: url('{{ .Get "audioCover" }}');"></div>
+  <div class="player-album-cover">
+    <img src="{{ .Get "audioCover" }}" alt="{{ .Get "alt" }}" />
+  </div>
 
-    {{ $id := printf "audio-%s" (.Get "arid") }}
-    
-    <audio id="{{ $id }}">
-        <!-- The source will be set by JavaScript -->
-    </audio>
+  <audio id="{{ $id }}">
+    <!-- The source will be set by JavaScript -->
+  </audio>
 
-    <div class="name-nd-control-nd-bar">
-        <div class='name-nd-control'>
-            <div class="song-info">
-                <p class="song-name" style="font: 700 20px / 1.5 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft YaHei,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,Arial,sans-serif;">{{ .Get "songname" }}</p>
-                <p class="song-sub-info aka-info" style="font-size: smaller;">{{ .Get "aka" }}</p>
-                <p class="song-sub-info artist-name">{{ .Get "artist" }}</p>
-                <p class="song-sub-info album-name" style="  font: 500 18px / 1.75 ibm plex mono, monospace;">「{{ .Get "album" }}」</p>
-            </div>
-            <div class="audio-controls">
-                <button id="playPauseButton">
-                    <svg id="playIcon" class="audio-control-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M239.433143 874.788571c17.133714 0 31.707429-6.857143 48.859428-16.713142l499.712-288.859429c35.565714-21.010286 48-34.724571 48-57.417143 0-22.729143-12.434286-36.443429-48-57.014857L288.292571 165.504c-17.152-9.874286-31.725714-16.274286-48.859428-16.274286-31.725714 0-51.437714 23.990857-51.437714 61.257143v602.587429c0 37.284571 19.712 61.714286 51.437714 61.714285z"></path></svg>
-                    <svg id="pauseIcon" class="audio-control-icon" viewBox="0 0 1024 1024" style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M307.785143 861.074286h97.28c37.723429 0 56.996571-19.712 56.996571-57.417143V219.904c0-38.985143-19.273143-56.996571-56.996571-56.996571h-97.28c-37.723429 0-57.417143 19.712-57.417143 56.996571V803.657143c0 37.723429 19.712 57.417143 57.417143 57.417143z m311.149714 0h97.28c37.723429 0 57.417143-19.712 57.417143-57.417143V219.904c0-38.985143-19.712-56.996571-57.417143-56.996571h-97.28c-37.723429 0-56.996571 19.712-56.996571 56.996571V803.657143c0 37.723429 19.273143 57.417143 56.996571 57.417143z"></path></svg>
-                </button>
-                <button id="loopButton">
-                    <svg id="loopOffIcon" class="audio-control-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M43.574857 480.731429a46.994286 46.994286 0 0 0 47.140572 47.122285 47.104 47.104 0 0 0 47.579428-47.140571v-28.288c0-68.132571 46.701714-113.133714 116.992-113.133714h323.565714v89.563428c0 23.149714 14.573714 37.723429 38.144 37.723429 10.294857 0 21.010286-3.858286 29.147429-10.715429l162.011429-133.723428c19.273143-15.433143 19.273143-41.142857 0-57.417143l-162.011429-134.582857c-8.137143-6.418286-18.852571-10.715429-29.147429-10.715429-23.570286 0-38.144 14.994286-38.144 38.144v88.722286H264.283429c-134.582857 0-220.708571 77.568-220.708572 199.277714z m401.554286 114.834285c0-23.131429-14.555429-37.705143-38.125714-37.705143-10.294857 0-20.992 3.84-29.147429 10.276572l-162.011429 133.723428c-19.273143 15.853714-19.273143 41.142857 0 57.417143l162.011429 134.582857a46.134857 46.134857 0 0 0 29.147429 10.715429c23.570286 0 38.144-14.573714 38.144-37.723429v-89.563428h314.569142c134.582857 0 220.708571-78.006857 220.708572-199.296v-35.145143a47.177143 47.177143 0 0 0-47.561143-47.561143 47.104 47.104 0 0 0-47.158857 47.579429v28.269714c0 67.712-46.701714 113.152-116.992 113.152H445.147429z"></path></svg>
-                    <svg id="loopOnIcon" class="audio-control-icon" viewBox="0 0 1024 1024" style="display: none;" version="1.1" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M933.723429 409.782857c26.569143 0 41.142857-14.573714 41.142857-42.002286V168.502857c0-30.866286-19.712-51.437714-49.718857-51.437714-25.289143 0-39.862857 8.155429-59.995429 23.588571l-54.857143 42.422857c-9.874286 7.716571-13.714286 16.274286-13.714286 25.709715 0 13.714286 10.276571 25.289143 27.849143 25.289143 6.857143 0 13.714286-2.139429 19.712-7.296l44.141715-35.565715h3.437714v176.566857c0 27.428571 14.994286 42.002286 42.002286 42.002286z m-890.148572 73.289143a46.994286 46.994286 0 0 0 47.140572 47.140571 47.104 47.104 0 0 0 47.579428-47.140571v-28.288c0-68.132571 46.701714-113.133714 116.992-113.133714h231.424v89.563428c0 23.149714 14.994286 37.723429 38.582857 37.723429 10.276571 0 20.992-3.858286 29.129143-10.715429l162.011429-133.723428c19.273143-15.853714 18.852571-41.142857 0-57.417143l-162.011429-134.582857c-8.137143-6.436571-18.834286-10.715429-29.129143-10.715429-23.588571 0-38.582857 14.994286-38.582857 38.144v88.722286H264.283429c-134.582857 0-220.708571 77.568-220.708572 199.277714z m401.554286 114.852571c0-23.131429-14.555429-37.705143-38.125714-37.705142-10.294857 0-20.992 3.84-29.147429 10.276571l-162.011429 133.723429c-19.273143 15.853714-19.273143 41.142857 0 57.417142l162.011429 134.582858a46.134857 46.134857 0 0 0 29.147429 10.715428c23.570286 0 38.144-14.573714 38.144-37.723428v-89.563429h314.569142c134.582857 0 220.708571-78.006857 220.708572-199.296v-35.145143a47.177143 47.177143 0 0 0-47.561143-47.561143 47.104 47.104 0 0 0-47.158857 47.561143v28.288c0 67.712-46.701714 113.152-116.992 113.152H445.147429z"></path></svg>
-                </button>
-            </div>
-        </div>
-        <div class="progress-bar">
-            <input id="progressBar" type="range" min="0" max="100" value="0">
-        </div>
-        <div class='time-remark'>
-            <div id="timeDisplay">00:00 / 00:00</div>
-        </div>
+  <div class="name-nd-control-nd-bar">
+    <div class='name-nd-control'>
+      <div class="song-info">
+        <p class="song-name"
+          style="font: 700 20px / 1.5 -apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft YaHei,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,Arial,sans-serif;">
+          {{ .Get "songname" }}</p>
+        <p class="song-sub-info aka-info" style="font-size: smaller;">{{ .Get "aka" }}</p>
+        <p class="song-sub-info artist-name">{{ .Get "artist" }}</p>
+        <p class="song-sub-info album-name" style="  font: 500 18px / 1.75 ibm plex mono, monospace;">「{{ .Get "album"
+          }}」</p>
+      </div>
+      <div class="audio-controls">
+        <button class="playPauseButton" id="playPauseButton-{{ $id }}">
+          <svg id="playIcon" class="audio-control-icon" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M239.433143 874.788571c17.133714 0 31.707429-6.857143 48.859428-16.713142l499.712-288.859429c35.565714-21.010286 48-34.724571 48-57.417143 0-22.729143-12.434286-36.443429-48-57.014857L288.292571 165.504c-17.152-9.874286-31.725714-16.274286-48.859428-16.274286-31.725714 0-51.437714 23.990857-51.437714 61.257143v602.587429c0 37.284571 19.712 61.714286 51.437714 61.714285z"></path></svg>
+          <svg id="pauseIcon" class="audio-control-icon" viewBox="0 0 1024 1024" style="display: none;" version="1.1"
+            xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M307.785143 861.074286h97.28c37.723429 0 56.996571-19.712 56.996571-57.417143V219.904c0-38.985143-19.273143-56.996571-56.996571-56.996571h-97.28c-37.723429 0-57.417143 19.712-57.417143 56.996571V803.657143c0 37.723429 19.712 57.417143 57.417143 57.417143z m311.149714 0h97.28c37.723429 0 57.417143-19.712 57.417143-57.417143V219.904c0-38.985143-19.712-56.996571-57.417143-56.996571h-97.28c-37.723429 0-56.996571 19.712-56.996571 56.996571V803.657143c0 37.723429 19.273143 57.417143 56.996571 57.417143z"></path></svg>
+        </button>
+        <button class="loopButton" id="loopButton-{{ $id }}">
+          <svg id="loopOffIcon" class="audio-control-icon" viewBox="0 0 1024 1024" version="1.1"
+            xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M43.574857 480.731429a46.994286 46.994286 0 0 0 47.140572 47.122285 47.104 47.104 0 0 0 47.579428-47.140571v-28.288c0-68.132571 46.701714-113.133714 116.992-113.133714h323.565714v89.563428c0 23.149714 14.573714 37.723429 38.144 37.723429 10.294857 0 21.010286-3.858286 29.147429-10.715429l162.011429-133.723428c19.273143-15.433143 19.273143-41.142857 0-57.417143l-162.011429-134.582857c-8.137143-6.418286-18.852571-10.715429-29.147429-10.715429-23.570286 0-38.144 14.994286-38.144 38.144v88.722286H264.283429c-134.582857 0-220.708571 77.568-220.708572 199.277714z m401.554286 114.834285c0-23.131429-14.555429-37.705143-38.125714-37.705143-10.294857 0-20.992 3.84-29.147429 10.276572l-162.011429 133.723428c-19.273143 15.853714-19.273143 41.142857 0 57.417143l162.011429 134.582857a46.134857 46.134857 0 0 0 29.147429 10.715429c23.570286 0 38.144-14.573714 38.144-37.723429v-89.563428h314.569142c134.582857 0 220.708571-78.006857 220.708572-199.296v-35.145143a47.177143 47.177143 0 0 0-47.561143-47.561143 47.104 47.104 0 0 0-47.158857 47.579429v28.269714c0 67.712-46.701714 113.152-116.992 113.152H445.147429z"></path></svg>
+          <svg id="loopOnIcon" class="audio-control-icon" viewBox="0 0 1024 1024" style="display: none;" version="1.1"
+            xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M933.723429 409.782857c26.569143 0 41.142857-14.573714 41.142857-42.002286V168.502857c0-30.866286-19.712-51.437714-49.718857-51.437714-25.289143 0-39.862857 8.155429-59.995429 23.588571l-54.857143 42.422857c-9.874286 7.716571-13.714286 16.274286-13.714286 25.709715 0 13.714286 10.276571 25.289143 27.849143 25.289143 6.857143 0 13.714286-2.139429 19.712-7.296l44.141715-35.565715h3.437714v176.566857c0 27.428571 14.994286 42.002286 42.002286 42.002286z m-890.148572 73.289143a46.994286 46.994286 0 0 0 47.140572 47.140571 47.104 47.104 0 0 0 47.579428-47.140571v-28.288c0-68.132571 46.701714-113.133714 116.992-113.133714h231.424v89.563428c0 23.149714 14.994286 37.723429 38.582857 37.723429 10.276571 0 20.992-3.858286 29.129143-10.715429l162.011429-133.723428c19.273143-15.853714 18.852571-41.142857 0-57.417143l-162.011429-134.582857c-8.137143-6.436571-18.834286-10.715429-29.129143-10.715429-23.588571 0-38.582857 14.994286-38.582857 38.144v88.722286H264.283429c-134.582857 0-220.708571 77.568-220.708572 199.277714z m401.554286 114.852571c0-23.131429-14.555429-37.705143-38.125714-37.705142-10.294857 0-20.992 3.84-29.147429 10.276571l-162.011429 133.723429c-19.273143 15.853714-19.273143 41.142857 0 57.417142l162.011429 134.582858a46.134857 46.134857 0 0 0 29.147429 10.715428c23.570286 0 38.144-14.573714 38.144-37.723428v-89.563429h314.569142c134.582857 0 220.708571-78.006857 220.708572-199.296v-35.145143a47.177143 47.177143 0 0 0-47.561143-47.561143 47.104 47.104 0 0 0-47.158857 47.561143v28.288c0 67.712-46.701714 113.152-116.992 113.152H445.147429z"></path></svg>
+        </button>
+      </div>
     </div>
+    <div class="progress-bar">
+      <input class="progressBar" id="progressBar-{{ $id }}" type="range" min="0" max="100" value="0">
+    </div>
+    <div class='time-remark'>
+      <div class="timeDisplay" id="timeDisplay-{{ $id }}">00:00 / 00:00</div>
+    </div>
+  </div>
 </div>
 
-
-
-<style>
-  #playPauseButton, #loopButton {
-      background: transparent;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-left: 10px;
-      width: 50px;
-  }
-  
-  #progressBar {
-      height: 4px;
-      border-radius: 6px;
-      border-color: transparent;
-  }
-  #timeDisplay {
-      font-size: 12px;
-      color: var(--second-class-color);
-  }
-  .audio-control-icon {
-      color: var(--font-color);
-  }
-  
-  .audio-card {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 87%;
-    height: auto;
-    margin: 15px auto 25px;
-    padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px transparent;
-  }
-  
-  .audio-card .background {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    border-radius: 6px;
-    box-shadow: 0 0 10px transparent;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    opacity: 0.25;
-  }
-  
-  .name-nd-control-nd-bar {
-    flex: 3;
-    display: flex;
-    height: 100%;
-    margin-left: 10px;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 10px;
-  }
-  
-  .player-album-cover {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px;
-  }
-  
-  .player-album-cover img {
-    max-width: 100%;
-    height: 100%;
-    width: 160px;
-    border-radius: 6px;
-  }
-  
-  .name-nd-control {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 100%;
-  }
-  
-  .audio-controls {
-    flex: 3;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0;
-  }
-  
-  .song-info {
-      flex: 13;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 10px;
-  }
-  
-  .progress-bar {
-    width: 100%;
-    margin-left: 12px;
-  }
-  
-  .my-progress .ant-slider-rail {
-    background-color: #ccc !important;
-  }
-  
-  .song-info .song-title {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  
-  .song-info .progress-bar {
-    flex: 1;
-    /* 添加你的进度条样式 */
-  }
-  
-  .audio-time {
-    font-size: smaller;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-style: italic;
-    color: #ccc;
-    padding: 2px 7px 3px;
-  }
-  
-  
-  input[type="range"] {
-    width: 100%;
-  }
-  
-  .song-name {
-    font: 700 20px / 1.5 Georgia, Xin Gothic, PingFang SC, Hiragino Sans GB, Droid Sans Fallback, Microsoft YaHei, sans-serif;  
-    padding: 0px 7px;
-    display: flex;
-    justify-content: flex-start;
-    align-self: flex-start;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  
-  .song-sub-info {
-    font-size: smaller;
-    padding: 0px 7px;
-    line-height: 1.0;
-    display: flex;
-    justify-content: flex-start;
-    align-self: flex-start;
-  }
-  
-  .artist-name {
-    margin-top: 0px;
-    margin-bottom: 10px;
-    font: 400 18px / 1.75 ibm plex mono, monospace;  
-    padding: 4px 7px;
-  
-  }
-  
-  .aka-info {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  
-  .album-name {
-    margin-top: 0px;
-    padding: 4px 7px;
-    margin-bottom: 0px;
-  
-  }
-  
-  
-  @media screen and (max-width: 650px) {
-    .audio-card {
-      flex-direction: column;
-      align-items: stretch
-    }
-    .name-nd-control {
-      flex-direction: column;
-    }
-    .song-name {
-      text-align: center;
-      justify-content: center;
-    }
-    .song-sub-info {
-      justify-content: center;
-    }
-  
-  }
-</style>
-
 <script>
-  var urls = "{{ .Get "urls" }}".split(", ");
-  var audioPlayer = document.getElementById('{{ $id }}');
-  var playPauseButton = document.getElementById('playPauseButton');
-  var playPauseIcon = document.getElementById('playPauseIcon');
-  var loopButton = document.getElementById('loopButton');
-  var loopIcon = document.getElementById('loopIcon');
-  var timeDisplay = document.getElementById('timeDisplay');
-  var progressBar = document.getElementById('progressBar');
+  document.addEventListener('DOMContentLoaded', function () {
+    const urls = "{{ .Get "urls" }}".split(", ");
+    const audioPlayer = document.getElementById('{{ $id }}');
+    const playPauseButton = document.getElementById('playPauseButton-{{ $id }}');
+    const playIcon = playPauseButton.querySelector('#playIcon');
+    const pauseIcon = playPauseButton.querySelector('#pauseIcon');
+    const loopButton = document.getElementById('loopButton-{{ $id }}');
+    const loopOffIcon = loopButton.querySelector('#loopOffIcon');
+    const loopOnIcon = loopButton.querySelector('#loopOnIcon');
+    const timeDisplay = document.getElementById('timeDisplay-{{ $id }}');
+    const progressBar = document.getElementById('progressBar-{{ $id }}');
+    const audioElements = Array.from(document.getElementsByTagName('audio'));
 
-  playPauseButton.onclick = function () {
+    playPauseButton.onclick = function () {
       if (audioPlayer.paused) {
-          audioPlayer.play();
+        for (var i = 0; i < audioElements.length; i++) {
+            if (audioElements[i] !== audioPlayer) {
+                audioElements[i].pause();
+            }
+        }
+        audioPlayer.play();
       } else {
-          audioPlayer.pause();
+        audioPlayer.pause();
       }
-  };
+    };
 
-  
-  audioPlayer.ontimeupdate = function () {
+
+    audioPlayer.ontimeupdate = function () {
       if (audioPlayer.paused) {
-          playIcon.style.display = '';
-          pauseIcon.style.display = 'none';
+        playIcon.style.display = '';
+        pauseIcon.style.display = 'none';
       } else {
-          playIcon.style.display = 'none';
-          pauseIcon.style.display = '';
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = '';
       }
-  };
+    };
 
-  loopButton.onclick = function () {
+    loopButton.onclick = function () {
       if (audioPlayer.loop) {
-          audioPlayer.loop = false;
-          loopOnIcon.style.display = 'none';
-          loopOffIcon.style.display = '';
+        audioPlayer.loop = false;
+        loopOnIcon.style.display = 'none';
+        loopOffIcon.style.display = '';
       } else {
-          audioPlayer.loop = true;
-          loopOnIcon.style.display = '';
-          loopOffIcon.style.display = 'none';
+        audioPlayer.loop = true;
+        loopOnIcon.style.display = '';
+        loopOffIcon.style.display = 'none';
       }
-  };
+    };
 
-  progressBar.oninput = function () {
+    progressBar.oninput = function () {
       audioPlayer.currentTime = audioPlayer.duration * (progressBar.value / 100);
-  };
+    };
 
-  function updateDisplay() {
+    function updateDisplay() {
+      if (isNaN(audioPlayer.duration) || isNaN(audioPlayer.currentTime)) {
+        return;
+      }
       var minutes = Math.floor(audioPlayer.currentTime / 60);
       var seconds = Math.floor(audioPlayer.currentTime % 60);
       var durationMinutes = Math.floor(audioPlayer.duration / 60);
       var durationSeconds = Math.floor(audioPlayer.duration % 60);
-  
+
       // Use padStart to ensure the minutes and seconds are always two digits
       var formattedMinutes = String(minutes).padStart(2, '0');
       var formattedSeconds = String(seconds).padStart(2, '0');
       var formattedDurationMinutes = String(durationMinutes).padStart(2, '0');
       var formattedDurationSeconds = String(durationSeconds).padStart(2, '0');
-  
+
       timeDisplay.textContent = formattedMinutes + ':' + formattedSeconds + ' / ' + formattedDurationMinutes + ':' + formattedDurationSeconds;
       progressBar.value = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  }
-  
-  setInterval(updateDisplay, 1000);
+    }
 
-  function tryNextUrl() {
+    setInterval(updateDisplay, 1000);
+
+    function tryNextUrl() {
       if (urls.length === 0) {
-          console.error('No valid audio URL found.');
-          return;
+        console.error('No valid audio URL found.');
+        return;
       }
 
       var url = urls.shift();
       audioPlayer.src = url;
 
       audioPlayer.onerror = function () {
-          console.error('Failed to load audio from URL: ' + url);
-          tryNextUrl();
+        console.error('Failed to load audio from URL: ' + url);
+        tryNextUrl();
       };
 
       audioPlayer.oncanplay = function () {
-          playIcon.style.display = '';
-          pauseIcon.style.display = 'none';
+        playIcon.style.display = '';
+        pauseIcon.style.display = 'none';
       };
-  }
+    }
 
-  tryNextUrl();
+    tryNextUrl();
+  });
 </script>
