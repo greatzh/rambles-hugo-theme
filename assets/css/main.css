@@ -64,7 +64,7 @@
     }
 
     .container {
-        max-width: 48em;
+        max-width: 45em;
         margin: 0 auto;
     }
 
@@ -247,7 +247,7 @@
     /* Header */
 
     .common-header {
-        padding: 1.5em;
+        padding: 2em;
         margin: auto;
         max-width: 1000px;
     }
@@ -275,7 +275,6 @@
         align-items: center;
         justify-content: space-between;
         vertical-align: middle;
-        margin-top: 1em;
     }
 
     .header-top-right {
@@ -339,6 +338,7 @@
     .header-top-nav-items li {
         display: inline;
         font-size: 18px;
+        margin: 16px;
     }
 
     .header-top-nav-items li:not(:first-of-type) {
@@ -983,21 +983,13 @@
 
     .image-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        /* 自动适应列宽 */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 10px;
-        /* 设置图片之间的间距 */
-        max-width: 100%;
-        margin: 0 auto;
-        align-items: center;
-        border-radius: 10px;
     }
 
-    .image-container>img {
+    .image-container img {
         max-width: 100%;
-        /* 图片宽度自适应容器 */
         height: auto;
-        /* 保持图片比例 */
     }
 
     .image-container.single-image {
@@ -1123,43 +1115,7 @@
 
         .site-title {
             margin-top: 0;
-        }
-
-        .image-container {
-            display: inherit;
-            overflow-x: auto;
-            /* 显示水平滚动条 */
-            white-space: nowrap;
-            /* 防止图片换行 */
-            scroll-behavior: smooth;
-            /* 平滑滚动效果 */
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        .image-container>img {
-            display: inline-block;
-            /* 将图片显示为行内块级元素 */
-            max-width: 100%;
-            /* 图片宽度自适应容器 */
-            height: auto;
-            /* 保持图片比例 */
-            margin-right: 10px;
-            /* 设置图片之间的间距 */
-        }
-
-        .image-container.single-image {
-            width: 90%; /* Adjust this value as needed */
-        }
-
-        .scroll-hint {
-            display: block;
-            color: grey;
-            text-align: center;
-            font-size: 0.6em;
-            font-style: italic;
-            margin-bottom: 0%;
-            margin-top: 0%;
+            margin-bottom: 1rem;
         }
 
         .post-list {
@@ -1185,9 +1141,48 @@
 
     }
 
+    @media (max-width: 768px){
+        .image-container {
+            display: inherit;
+            overflow-x: auto;
+            /* 显示水平滚动条 */
+            white-space: nowrap;
+            /* 防止图片换行 */
+            scroll-behavior: smooth;
+            /* 平滑滚动效果 */
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .image-container > .lightbox-link img {
+            display: inline-block;
+            /* 将图片显示为行内块级元素 */
+            max-width: 100%;
+            /* 图片宽度自适应容器 */
+            height: auto;
+            /* 保持图片比例 */
+            margin-right: 10px;
+            /* 设置图片之间的间距 */
+        }
+
+        .image-container.single-image {
+            width: 90%; /* Adjust this value as needed */
+        }
+
+        .scroll-hint {
+            display: block;
+            color: grey;
+            text-align: center;
+            font-size: 0.6em;
+            font-style: italic;
+            margin-bottom: 0%;
+            margin-top: 0%;
+        }
+    }
+
     @media (min-width: 1366px) {
         .container {
-            /* max-width: 50em; */
+            max-width: 50em;
             position: relative;
         }
 
@@ -1210,7 +1205,7 @@
 
     @media (min-width: 2048px) {
         .container {
-            max-width: 60em;
+            max-width: 65em;
             position: relative;
         }
         .common-header {

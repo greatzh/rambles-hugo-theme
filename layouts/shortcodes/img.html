@@ -1,11 +1,5 @@
-<img 
-    class="img-shortcode" 
-    src="{{ .Get "src" }}" 
-    alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
->
-{{ if .Get "caption" }}
-    <figcaption>
-        {{ .Get "caption" | markdownify }}
-    </figcaption>
-{{ end }}
-
+<a class="lightbox-link" href="{{ .Get "url" | safeURL }}" data-lightbox="iamge-set-{{ .Get "irid" }}"  data-title="{{ .Get "caption"
+    }}">
+    <img class="img-shortcode" src="{{ .Get "url" }}" alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" |
+        markdownify | plainify }}{{ end }}">
+</a>

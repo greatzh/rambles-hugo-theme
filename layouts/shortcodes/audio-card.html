@@ -5,7 +5,7 @@
         <img src="{{ .Get "audioCover" }}" alt="{{ .Get "alt" }}" />
     </div>
 
-    {{ $id := printf "audio-%s" (.Get "srid") }}
+    {{ $id := printf "audio-%s" (.Get "arid") }}
     
     <audio id="{{ $id }}">
         <!-- The source will be set by JavaScript -->
