@@ -956,9 +956,9 @@
 
     .iframe-container {
         position: relative;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
-        padding-bottom: 50.625%;
+        padding-bottom: 56.25%;
         /* 16:9 宽高比，根据需要调整 */
     }
 
@@ -984,7 +984,7 @@
     .image-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 10px;
+        column-gap: 5.4px;
     }
 
     .image-container img {
