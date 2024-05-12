@@ -974,24 +974,26 @@
 
     .table-container {
         overflow-x: auto;
-        /* 显示水平滚动条 */
         max-width: 100%;
-        /* 设置容器的最大宽度为父容器的宽度 */
         border-radius: 10px;
         font: 400 15px/1.05 ibm plex mono,monospace;
     }
-
+    
     .image-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        column-gap: 5.4px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        justify-content: flex-start;
     }
-
+    
     .image-container img {
         max-width: 100%;
-        height: auto;
+        height: 150px;
+        object-fit: cover;
+        flex: auto;
+        margin: 0 10px 10px 0;
     }
-
+    
     .image-container.single-image {
         overflow: visible;
         width: 60%; /* Adjust this value as needed */
@@ -1150,7 +1152,7 @@
             /* 防止图片换行 */
             scroll-behavior: smooth;
             /* 平滑滚动效果 */
-            max-width: 90%;
+            max-width: 100%;
             margin: 0 auto;
         }
 
@@ -1158,15 +1160,14 @@
             display: inline-block;
             /* 将图片显示为行内块级元素 */
             max-width: 100%;
-            /* 图片宽度自适应容器 */
-            height: auto;
-            /* 保持图片比例 */
+            height: 200px;
+            object-fit: cover;
             margin-right: 10px;
             /* 设置图片之间的间距 */
         }
 
         .image-container.single-image {
-            width: 90%; /* Adjust this value as needed */
+            width: 100%; /* Adjust this value as needed */
         }
 
         .scroll-hint {
