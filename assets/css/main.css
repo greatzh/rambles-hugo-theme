@@ -956,10 +956,14 @@
 
     .iframe-container {
         position: relative;
-        width: 100%;
-        margin: 0 auto;
-        padding-bottom: 56.25%;
+        width: 50%;
+        padding-bottom: 28.125%;
         /* 16:9 宽高比，根据需要调整 */
+    }
+
+    .video-caption {
+        display: inline-block;
+        margin-left: 0;
     }
 
     .iframe-container iframe {
@@ -1139,6 +1143,13 @@
             grid-template-areas: "title divider";
             align-items: center;
             min-height: 32px;
+        }
+        .iframe-container {
+            width: 100%; /* 改变大小 */
+            padding-bottom: 56.25%; /* 改变宽高比 */
+        }
+        .video-caption {
+            margin: 0 auto;
         }
 
     }
