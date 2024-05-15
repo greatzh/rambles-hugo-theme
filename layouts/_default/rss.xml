@@ -28,8 +28,8 @@
       {{ with .Site.Author.email }}<author>{{.}}{{ with $.Site.Author.name }} ({{.}}){{end}}</author>{{end}}
       <guid>{{ .Permalink }}</guid>
       <description>
-        {{ .Content | replaceRE "<div class=\"aig-summary-container\">.*</div>" "" | html }}
-      </description>      
+        {{ .Content | html }}
+      </description>   
     </item>
     {{ end }}
   </channel>

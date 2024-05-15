@@ -76,12 +76,6 @@ Video:
 Audio:
   other: "声音"
 
-scroll-hint:
-  other: "左右滑动查看更多图片"
-
-aig-summary:
-  other: "AI 生成的摘要"  
-
 go-home:
   other: "回到首页"
 

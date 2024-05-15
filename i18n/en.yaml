@@ -88,12 +88,6 @@ video:
 audio:
   other: "Audios"
 
-scroll-hint:
-  other: "swipe left/right to view more images"  
-
-aig-summary:
-  other: "AI-generated summary"  
-
 go-home:
   other: "Go Home"
 

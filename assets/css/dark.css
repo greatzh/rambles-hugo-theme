@@ -5,7 +5,7 @@
 --forbidden-class-color: #bfbfbf;
 --first-class-border-color: #424242FF;
 --divider-color: #FDFDFD1F;
---bg-color: #0d1117;
+--bg-color: #121212;
 
 --link-color:#599ada;
 --link-state-color:#40a9ff;
@@ -33,10 +33,6 @@
 
 --svg-color: #ccc;
 --svg-state-color:#1890ff;
-
---language-selected: grey;
-
---aig-summary-border-color: #424242FF;
 
 --color-bg-secondary: #00000000;
 --color-bg-secondary-hover: #21262d;
