@@ -208,7 +208,7 @@
         .pagination-item{padding:.5em .5em;font-size:14px}
         .post-navigation{background:var(--pagination-bg-color);text-align:center;padding:.5em 0}
         .post-navigation a{margin-left:.5em}
-        .post-pagination .pagination-item{width:90%}
+        .post-pagination .pagination-item{width:90%;margin: auto;}
         .header-top-controls{display:flex;justify-content:space-between;align-items:center}
         .header-top-left{display:flex;justify-content:space-between;align-items:center;flex-direction:column}
         .header-top-right{display:flex;justify-content:center}
