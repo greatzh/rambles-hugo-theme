@@ -4,7 +4,7 @@
     </div>
 
     <div class="articles h-feed">
-        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all") }}
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
         {{ $pages = where $pages "Params.hidden" "!=" true }}
         {{ $paginator := .Paginate $pages }}
         {{ range $paginator.Pages }}

@@ -3,12 +3,13 @@
         {{ .Content }}
     </div>
 
-    <div style="cursor: pointer;" onclick="toggleAllGroups()">全部展开/全部收起</div>
-
-    <div class="articles h-feed">
-        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all") }}
+    <div class="articles h-feed post-single">
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
         {{ $pages = where $pages "Params.hidden" "!=" true }}
         {{ $pagesByYear := $pages.GroupByDate "2006" }}
+        <h1>Archive</h1>
+        <p>所有碎碎念将在一个页面显示，加载可能需要花费一些时间</p>
+        <div style="cursor: pointer; color: var(--link-state-color)" onclick="toggleAllGroups()">全部展开/全部收起</div>
         {{ range $pagesByYear }}
             <h2 class="year-group" onclick="toggleGroup(this)">
                 {{ .Key }} ({{ len .Pages }})

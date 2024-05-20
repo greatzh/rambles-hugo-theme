@@ -1,0 +1,40 @@
+{{ define "main" }}
+    <div class="homepage-content">
+        {{ .Content }}
+    </div>
+
+    <div class="articles h-feed post-single">
+        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
+        {{ $pages = where $pages "Params.hidden" "!=" true }}
+        {{ $today := now.Format "01-02" }}
+        {{ $filteredPages := slice }}
+        {{ range $pages }}
+            {{ $pageDate := .Date.Format "01-02" }}
+            {{ if eq $pageDate $today }}
+                {{ $filteredPages = $filteredPages | append . }}
+            {{ end }}
+        {{ end }}
+        <h2>On This Day</h2>
+        <h1> {{ now.Format "January 2" }}</h1>
+        {{ if $filteredPages }}
+            <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
+            {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
+            <div class="timeline">
+                {{ range sort $pagesByYear "Key" "desc" }}
+                    <div class="timeline-item">
+                        <div class="timeline-icon"></div>
+                        <div class="timeline-content">
+                            <h2 class="timeline-year">{{ .Key }}</h2>
+                            {{ range .Pages }}
+                                {{ partial "post-summary.html" . }}
+                            {{ end }}
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+        {{ else }}
+            <p>那年今日 还未回顾到任何碎碎念记录</p>
+        {{ end }}
+    </div>
+
+{{ end }}
