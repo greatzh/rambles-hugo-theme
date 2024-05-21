@@ -19,8 +19,7 @@
           {{ .Get "songname" }}</p>
         <p class="song-sub-info aka-info" style="font-size: smaller;">{{ .Get "aka" }}</p>
         <p class="song-sub-info artist-name">{{ .Get "artist" }}</p>
-        <p class="song-sub-info album-name" style="  font: 500 18px / 1.75 ibm plex mono, monospace;">「{{ .Get "album"
-          }}」</p>
+        <p class="song-sub-info album-name" style="  font: 500 18px / 1.75 ibm plex mono, monospace;">「{{ .Get "album"}}」</p>
       </div>
       <div class="audio-controls">
         <button class="playPauseButton" id="playPauseButton-{{ $id }}">
@@ -59,8 +58,27 @@
     const timeDisplay = document.getElementById('timeDisplay-{{ $id }}');
     const progressBar = document.getElementById('progressBar-{{ $id }}');
     const audioElements = Array.from(document.getElementsByTagName('audio'));
+    const seekTime = 10;
+
 
     playPauseButton.onclick = function () {
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: '{{ .Get "songname" }}',
+          artist: '{{ .Get "artist" }}',
+          album: '{{ .Get "album" }}',
+          artwork: [
+            { src: '{{ .Get "audioCover" }}', sizes: '512x512' },
+          ]
+        });
+      
+        navigator.mediaSession.setActionHandler('play', function() { audioPlayer.play(); });
+        navigator.mediaSession.setActionHandler('pause', function() { audioPlayer.pause(); });
+        navigator.mediaSession.setActionHandler('seekbackward', function() { audioPlayer.currentTime -= seekTime; });
+        navigator.mediaSession.setActionHandler('seekforward', function() { audioPlayer.currentTime += seekTime; });
+        // Add more action handlers as needed
+      }
+
       if (audioPlayer.paused) {
         for (var i = 0; i < audioElements.length; i++) {
             if (audioElements[i] !== audioPlayer) {

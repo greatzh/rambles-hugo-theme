@@ -86,7 +86,7 @@
 
     /* nav item */
     .header-top-nav-items{display:inline;padding-left:0;list-style-type:none}
-    .header-top-nav-items li{display:inline;font-size:18px}
+    .header-top-nav-items li{display:inline;font-size:18px;padding:5px}
     .header-top-nav-items li:not(:first-of-type){margin-left:.5em}
     .header-top-nav-items a:hover,.header-top-nav-items a:focus,.header-top-nav-items a:active{color:var(--link-state-color);border-bottom:1px solid var(--link-state-border-color);text-decoration:none}
     .inline-svg{display:inline-block;height:1.15rem;width:1.15rem;top:.15rem;position:inherit}
