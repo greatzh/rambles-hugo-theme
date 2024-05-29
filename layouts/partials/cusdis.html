@@ -1,7 +1,7 @@
 <!-- Comments by Cusdis -->
-<div id="cusdis_thread" data-host="https://cusdis.com" data-app-id="{{ .Site.Params.cusdisId  }}"
-    data-page-id="{{ strings.TrimSuffix "/" .Permalink }}" data-page-url="{{ .Permalink }}"
+<div id="cusdis_thread" data-host="{{ .Site.Params.cusdisHost  }}" data-app-id="{{ .Site.Params.cusdisId  }}"
+    data-page-id="{{ .Permalink }}" data-page-url="{{ .Permalink }}"
     data-page-title="{{ .Title }}" data-theme="auto">
 </div>
-<script defer src="https://cusdis.com/js/widget/lang/zh-cn.js"></script>
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+<script defer src="{{ .Site.Params.cusdisHost }}/js/widget/lang/zh-cn.js"></script>
+<script async defer src="{{ .Site.Params.cusdisHost }}/js/cusdis.es.js"></script>
