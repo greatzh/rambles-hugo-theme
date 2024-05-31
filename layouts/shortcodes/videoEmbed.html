@@ -1,6 +1,6 @@
 <div class="iframe-container">
     {{ if eq (.Get "type") "youtube" }}
-        <iframe title="yt" src="{{ .Get "src" | safeURL }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe title="yt" src="{{ .Get "src" | safeURL }}" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     {{ else if eq (.Get "type") "bilibili" }}
         <iframe title="bl" src="{{ .Get "src" | safeURL }}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
     {{ end }}
