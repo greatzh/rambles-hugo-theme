@@ -43,4 +43,16 @@
     --color-text2-secondary: #0969da;
 
     --shadow-color: #b5f5ec;
+    --theme-color: #1890ff;
+    --active-color: #0050b3;
+
+    --info-bg-color: #f8f8f8;
+    --info-color: #999;
+    --bg-color-hover: #f0f0f0;
+    --border-color: #ddd;
+    --disable-color: #000;
+    --code-bg-color: #282c34;
+    --bq-color: #f0f0f0;
+    --dark-grey: #666;
+
 }

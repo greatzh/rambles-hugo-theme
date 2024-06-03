@@ -1,0 +1,25 @@
+<div id="waline"></div>
+<script type="module">
+  import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+  init({
+    dark: 'html[data-theme="dark"]',
+    lang: "zh-CN",
+    el: "#waline",
+    comment: true,
+    reaction: ["/favicon.png"],
+    emoji: false,
+    search: false,
+    login: "disable",
+    imageUploader: false,
+    locale: {
+      reactionTitle: "",
+      nick: "昵称",
+      mail: "邮箱(可选)",
+      link: "个人网址(可选)",
+      placeholder: "随便说点什么吧...（留下真实邮箱可显示头像和收到回复通知）",
+      sofa: "还没有评论~ 快来抢沙发吧！",
+    },
+    serverURL: "{{ .Site.Params.walineURL }}",
+  });
+</script>

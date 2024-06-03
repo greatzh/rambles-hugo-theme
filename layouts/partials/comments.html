@@ -22,6 +22,10 @@
     {{ if .Site.Params.cusdisId }}
         {{ partial "cusdis.html" . }}
     {{ end }}
+
+    {{ if .Site.Params.walineURL }}
+    {{ partial "waline.html" . }}
+{{ end }}
 </div>
 
 <style>
