@@ -576,6 +576,7 @@
   border-radius: 50%;
   background: var(--waline-bg-color);
   box-shadow: var(--waline-box-shadow);
+  display:none;
 }
 .wl-card-item {
   position: relative;
@@ -589,7 +590,6 @@
   flex: 1;
   width: 0;
   padding-bottom: 0.5em;
-  border-bottom: 2px solid var(--waline-border-color);
 }
 .wl-card:first-child {
   margin-inline-start: 1em;

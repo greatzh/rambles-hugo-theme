@@ -1,3 +1,11 @@
+<head>
+  <!-- ... -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/jz1998/counthit@master/waline_custom.css"
+  />
+  <!-- ... -->
+</head>
 <div id="waline"></div>
 <script type="module">
   import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
@@ -17,8 +25,8 @@
       nick: "昵称",
       mail: "邮箱(可选)",
       link: "个人网址(可选)",
-      placeholder: "随便说点什么吧...（留下真实邮箱可显示头像和收到回复通知）",
-      sofa: "还没有评论~ 快来抢沙发吧！",
+      placeholder: "随便说点什么吧...",
+      sofa: "还没有评论……",
     },
     serverURL: "{{ .Site.Params.walineURL }}",
   });
