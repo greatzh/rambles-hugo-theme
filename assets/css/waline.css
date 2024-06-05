@@ -1,27 +1,10 @@
 :root {
   --waline-font-size: 18px;
-  --waline-white: var(--bg-color);
-  --waline-light-grey: var(--info-color);
-  --waline-dark-grey: var(--dark-grey);
-  --waline-theme-color: var(--theme-color);
-  --waline-active-color: var(--active-color);
-  --waline-color: var(--font-color);
-  --waline-bg-color: var(--bg-color);
-  --waline-bg-color-light: var(--info-bg-color);
-  --waline-bg-color-hover: var(--bg-color-hover);
-  --waline-border-color: var(--first-class-border-color);
-  --waline-disable-bg-color: var(--info-bg-color);
-  --waline-disable-color: var(--disable-color);
-  --waline-code-bg-color: var(--code-bg-color);
-  --waline-bq-color: var(--bq-color);
   --waline-avatar-size: 3.25rem;
   --waline-m-avatar-size: calc(var(--waline-avatar-size) * 9 / 13);
   --waline-badge-color: #3498db;
   --waline-badge-font-size: 0.75em;
-  --waline-info-bg-color: var(--info-bg-color);
-  --waline-info-color: var(--info-color);
   --waline-info-font-size: 0.625em;
-  --waline-border: 1px solid var(--waline-border-color);
   --waline-avatar-radius: 50%;
   --waline-box-shadow: none;
 }
@@ -38,18 +21,18 @@
   line-height: 1.75;
 }
 [data-waline] p {
-  color: var(--waline-color);
+  color: var(--font-color);
 }
 [data-waline] a {
   position: relative;
   display: inline-block;
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
   text-decoration: none;
   word-break: break-word;
   cursor: pointer;
 }
 [data-waline] a:hover {
-  color: var(--waline-active-color);
+  color: var(--active-color);
 }
 [data-waline] img {
   max-width: 100%;
@@ -59,14 +42,14 @@
 [data-waline] hr {
   margin: 0.825em 0;
   border-style: dashed;
-  border-color: var(--waline-bg-color-light);
+  border-color: var(--info-bg-color);
 }
 [data-waline] code,
 [data-waline] pre {
   margin: 0;
   padding: 0.2em 0.4em;
   border-radius: 3px;
-  background: var(--waline-bg-color-light);
+  background: var(--info-bg-color);
   font-size: 85%;
 }
 [data-waline] pre {
@@ -87,20 +70,20 @@
   width: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  background: var(--waline-theme-color);
+  background: var(--theme-color);
 }
 [data-waline] pre code {
   padding: 0;
   background: rgba(0, 0, 0, 0);
-  color: var(--waline-color);
+  color: var(--font-color);
   white-space: pre-wrap;
   word-break: keep-all;
 }
 [data-waline] blockquote {
   margin: 0.5em 0;
   padding: 0.5em 0 0.5em 1em;
-  border-inline-start: 8px solid var(--waline-bq-color);
-  color: var(--waline-dark-grey);
+  border-inline-start: 8px solid var(--bq-color);
+  color: var(--dark-grey);
 }
 [data-waline] blockquote > p {
   margin: 0;
@@ -121,10 +104,10 @@
   min-width: 2.5em;
   margin-bottom: 0;
   padding: 0.5em 1em;
-  border: 1px solid var(--waline-border-color);
+  border: 1px solid var(--first-class-border-color);
   border-radius: 0.1em;
   background: rgba(0, 0, 0, 0);
-  color: var(--waline-color);
+  color: var(--font-color);
   font-weight: 400;
   font-size: 0.75em;
   line-height: 1.5;
@@ -137,30 +120,30 @@
 }
 .wl-btn:hover,
 .wl-btn:active {
-  border-color: var(--waline-theme-color);
-  color: var(--waline-theme-color);
+  border-color: var(--theme-color);
+  color: var(--theme-color);
 }
 .wl-btn:disabled {
-  border-color: var(--waline-border-color);
-  background: var(--waline-disable-bg-color);
-  color: var(--waline-disable-color);
+  border-color: var(--first-class-border-color);
+  background: var(--info-bg-color);
+  color: var(--disable-color);
   cursor: not-allowed;
 }
 .wl-btn.primary {
-  border-color: var(--waline-theme-color);
-  background: var(--waline-theme-color);
-  color: var(--waline-white);
+  border-color: var(--theme-color);
+  background: var(--theme-color);
+  color: var(--bg-color);
 }
 .wl-btn.primary:hover,
 .wl-btn.primary:active {
-  border-color: var(--waline-active-color);
-  background: var(--waline-active-color);
-  color: var(--waline-white);
+  border-color: var(--active-color);
+  background: var(--active-color);
+  color: var(--bg-color);
 }
 .wl-btn.primary:disabled {
-  border-color: var(--waline-border-color);
-  background: var(--waline-disable-bg-color);
-  color: var(--waline-disable-color);
+  border-color: var(--first-class-border-color);
+  background: var(--info-bg-color);
+  color: var(--disable-color);
   cursor: not-allowed;
 }
 .wl-loading {
@@ -204,7 +187,7 @@
   width: var(--waline-avatar-size);
   height: var(--waline-avatar-size);
   margin: 0 auto;
-  border: var(--waline-border);
+  border: var(--first-class-border-color);
   border-radius: var(--waline-avatar-radius);
 }
 @media (max-width: 720px) {
@@ -220,7 +203,7 @@
 }
 .wl-login-nick {
   display: block;
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
   font-size: 0.75em;
   word-break: break-all;
 }
@@ -230,7 +213,6 @@
   width: 100%;
   margin: 0.5em;
   border-radius: 0.1em;
-  background: var(--waline-bg-color);
 }
 .wl-header {
   display: flex;
@@ -249,7 +231,7 @@
 .wl-header label {
   min-width: 40px;
   padding: 0.75em 0.5em;
-  color: var(--waline-color);
+  color: var(--font-color);
   font-size: 0.75em;
 }
 .wl-header input {
@@ -259,7 +241,7 @@
   font-size: 16px;
   border-radius: 0.1em;
   resize: none;
-  border: 1px solid var(--waline-border-color);
+  border: 1px solid var(--first-class-border-color);
 }
 .wl-header-item {
     display: flex;
@@ -291,7 +273,7 @@
 }
 .wl-editor {
   position: relative;
-  width: calc(100% - 1em);
+  width: calc(100% - 1.5em);
   min-height: 8.75em;
   margin: 0.75em 0.5em 0 0.5em;  
   border-radius: 0.1em;
@@ -303,10 +285,10 @@
 .wl-input {
   max-width: 100%;
   border: none;
-  color: var(--waline-color);
+  color: var(--font-color);
   outline: none;
   transition: all 0.25s ease;
-  border: 1px solid var(--waline-border-color);
+  border: 1px solid var(--first-class-border-color);
 }
 .wl-editor:hover,
 .wl-input:hover,
@@ -355,21 +337,21 @@
   padding: 0;
   border: none;
   background: rgba(0, 0, 0, 0);
-  color: var(--waline-color);
+  color: var(--font-color);
   font-size: 16px;
   cursor: pointer;
 }
 .wl-action:hover {
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
 }
 .wl-action.active {
-  color: var(--waline-active-color);
+  color: var(--active-color);
 }
 #wl-image-upload {
   display: none;
 }
 #wl-image-upload:focus + label {
-  color: var(--waline-color);
+  color: var(--font-color);
 }
 #wl-image-upload:focus-visible + label {
   outline: -webkit-focus-ring-color auto 1px;
@@ -381,7 +363,7 @@
   justify-content: flex-end;
 }
 .wl-info .wl-text-number {
-  color: var(--waline-info-color);
+  color: var(--info-color);
   font-size: 0.75em;
 }
 .wl-info .wl-text-number .illegal {
@@ -403,9 +385,9 @@
   display: none;
   width: 100%;
   max-width: 526px;
-  border: var(--waline-border);
+  border: var(--first-class-border-color);
   border-radius: 6px;
-  background: var(--waline-bg-color);
+  background: var(--bg-color);
   box-shadow: var(--waline-box-shadow);
 }
 .wl-emoji-popup.display {
@@ -425,7 +407,7 @@
   cursor: pointer;
 }
 .wl-emoji-popup button:hover {
-  background: var(--waline-bg-color-hover);
+  background: var(--bg-color-hover);
 }
 .wl-emoji-popup .wl-emoji {
   display: inline-block;
@@ -451,7 +433,7 @@
   width: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  background: var(--waline-theme-color);
+  background: var(--theme-color);
 }
 .wl-emoji-popup .wl-tabs {
   position: relative;
@@ -467,7 +449,7 @@
   left: 0;
   z-index: 2;
   height: 1px;
-  background: var(--waline-border-color);
+  background: var(--first-class-border-color);
 }
 .wl-emoji-popup .wl-tabs::-webkit-scrollbar {
   width: 6px;
@@ -482,7 +464,7 @@
   height: 6px;
   -webkit-border-radius: 6px;
   border-radius: 6px;
-  background: var(--waline-theme-color);
+  background: var(--theme-color);
 }
 .wl-emoji-popup .wl-tab {
   position: relative;
@@ -491,11 +473,11 @@
 }
 .wl-emoji-popup .wl-tab.active {
   z-index: 3;
-  border: 1px solid var(--waline-border-color);
+  border: 1px solid var(--first-class-border-color);
   border-top-width: 0;
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-  background: var(--waline-bg-color);
+  background: var(--bg-color);
 }
 .wl-gif-popup {
   position: absolute;
@@ -504,9 +486,9 @@
   z-index: 10;
   width: calc(100% - 3em);
   padding: 0.75em 0.75em 0.25em;
-  border: var(--waline-border);
+  border: var(--first-class-border-color);
   border-radius: 6px;
-  background: var(--waline-bg-color);
+  background: var(--bg-color);
   box-shadow: var(--waline-box-shadow);
   opacity: 0;
   visibility: hidden;
@@ -524,7 +506,7 @@
   width: 100%;
   margin-bottom: 10px;
   padding: 3px 5px;
-  border: var(--waline-border);
+  border: var(--first-class-border-color);
 }
 .wl-gif-popup img {
   display: block;
@@ -536,7 +518,7 @@
   cursor: pointer;
 }
 .wl-gif-popup img:hover {
-  border-color: var(--waline-theme-color);
+  border-color: var(--theme-color);
   border-radius: 2px;
 }
 .wl-gallery {
@@ -574,7 +556,7 @@
   top: calc(var(--avatar-size) * 3 / 4);
   inset-inline-start: calc(var(--avatar-size) * 3 / 4);
   border-radius: 50%;
-  background: var(--waline-bg-color);
+  background: var(--bg-color);
   box-shadow: var(--waline-box-shadow);
   display:none;
 }
@@ -616,7 +598,7 @@
   text-decoration: none;
 }
 .wl-card span.wl-nick {
-  color: var(--waline-dark-grey);
+  color: var(--dark-grey);
 }
 .wl-card .wl-badge {
   display: inline-block;
@@ -629,7 +611,7 @@
 }
 .wl-card .wl-time {
   margin-inline-end: 0.875em;
-  color: var(--waline-info-color);
+  color: var(--info-color);
   font-size: 0.75em;
 }
 .wl-card .wl-meta {
@@ -641,8 +623,8 @@
   margin-inline-end: 0.25em;
   padding: 2px 4px;
   border-radius: 0.2em;
-  background: var(--waline-info-bg-color);
-  color: var(--waline-info-color);
+  background: var(--info-bg-color);
+  color: var(--info-color);
   font-size: var(--waline-info-font-size);
   line-height: 1.5;
 }
@@ -664,7 +646,7 @@
   align-items: center;
   border: none;
   background: rgba(0, 0, 0, 0);
-  color: var(--waline-color);
+  color: var(--font-color);
   line-height: 1;
   cursor: pointer;
   transition: color 0.2s ease;
@@ -673,13 +655,13 @@
 .wl-card .wl-like:hover,
 .wl-card .wl-reply:hover,
 .wl-card .wl-edit:hover {
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
 }
 .wl-card .wl-delete.active,
 .wl-card .wl-like.active,
 .wl-card .wl-reply.active,
 .wl-card .wl-edit.active {
-  color: var(--waline-active-color);
+  color: var(--active-color);
 }
 .wl-card .wl-content {
   position: relative;
@@ -745,13 +727,13 @@
   border-radius: 0 0.5em 0.5em 0;
 }
 .wl-card .wl-quote {
-  border-inline-start: 2px solid var(--waline-border-color);
+  border-inline-start: 2px solid var(--first-class-border-color);
 }
 .wl-card .wl-quote .wl-user {
   --avatar-size: var(--waline-m-avatar-size);
 }
 .wl-close-icon {
-  color: var(--waline-border-color);
+  color: var(--first-class-border-color);
 }
 .wl-content .vemoji,
 .wl-content .wl-emoji {
@@ -761,8 +743,8 @@
   margin: -0.125em 0.25em;
 }
 .wl-content .wl-tex {
-  background: var(--waline-info-bg-color);
-  color: var(--waline-info-color);
+  background: var(--info-bg-color);
+  color: var(--info-color);
 }
 .wl-content span.wl-tex {
   display: inline-block;
@@ -795,7 +777,7 @@
 .wl-empty {
   overflow: auto;
   padding: 1.25em;
-  color: var(--waline-color);
+  color: var(--font-color);
   text-align: center;
 }
 .wl-operation {
@@ -806,7 +788,7 @@
 }
 .wl-power {
   padding: 0.5em 0;
-  color: var(--waline-light-grey);
+  color: var(--info-color);
   font-size: var(--waline-info-font-size);
   text-align: end;
 }
@@ -822,12 +804,12 @@
 }
 .wl-sort li {
   display: inline-block;
-  color: var(--waline-info-color);
+  color: var(--info-color);
   font-size: 0.75em;
   cursor: pointer;
 }
 .wl-sort li.active {
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
 }
 .wl-sort li + li {
   margin-inline-start: 1em;
@@ -891,7 +873,7 @@
   inset-inline-end: -5px;
   width: 18px;
   height: 18px;
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
 }
 .wl-reaction-votes {
   position: absolute;
@@ -899,23 +881,23 @@
   inset-inline-end: -9px;
   min-width: 1em;
   padding: 2px;
-  border: 1px solid var(--waline-theme-color);
+  border: 1px solid var(--theme-color);
   border-radius: 1em;
-  background: var(--waline-bg-color);
-  color: var(--waline-theme-color);
+  background: var(--bg-color);
+  color: var(--theme-color);
   font-weight: 700;
   font-size: 0.75em;
   line-height: 1;
 }
 .wl-reaction-item.active .wl-reaction-votes {
-  background: var(--waline-theme-color);
-  color: var(--waline-bg-color);
+  background: var(--theme-color);
+  color: var(--bg-color);
 }
 .wl-reaction-text {
   font-size: 0.875em;
 }
 .wl-reaction-item.active .wl-reaction-text {
-  color: var(--waline-theme-color);
+  color: var(--theme-color);
 }
 .wl-content pre,
 .wl-content pre[class*="language-"] {
@@ -923,7 +905,7 @@
   margin: 0.75rem 0;
   padding: 1rem 1.25rem;
   border-radius: 6px;
-  background: var(--waline-code-bg-color);
+  background: var(--code-bg-color);
   line-height: 1.4;
 }
 .wl-content pre code,
@@ -1032,7 +1014,7 @@
 .wl-user-list a,
 .wl-user-list a:hover,
 .wl-user-list a:visited {
-  color: var(--waline-color);
+  color: var(--font-color);
   text-decoration: none;
 }
 .wl-user-list .wl-user-avatar {
@@ -1055,8 +1037,8 @@
   height: 1.5em;
   padding: 0 0.4em;
   border-radius: 4px;
-  background: var(--waline-info-bg-color);
-  color: var(--waline-info-color);
+  background: var(--info-bg-color);
+  color: var(--info-color);
   font-weight: bold;
   font-size: 10px;
   line-height: 1.5em;
@@ -1067,17 +1049,17 @@
 }
 .wl-user-list .wl-user-item:nth-child(1) .wl-user-badge {
   background: var(--waline-rank-gold-bg-color, #fa3939);
-  color: var(--waline-white);
+  color: var(--bg-color);
   font-weight: bold;
 }
 .wl-user-list .wl-user-item:nth-child(2) .wl-user-badge {
   background: var(--waline-rank-silver-bg-color, #fb811c);
-  color: var(--waline-white);
+  color: var(--bg-color);
   font-weight: bold;
 }
 .wl-user-list .wl-user-item:nth-child(3) .wl-user-badge {
   background: var(--waline-rank-copper-bg-color, #feb207);
-  color: var(--waline-white);
+  color: var(--bg-color);
 }
 .wl-user-list .wl-user-meta {
   display: inline-block;

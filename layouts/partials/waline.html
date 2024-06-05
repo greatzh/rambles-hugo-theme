@@ -1,17 +1,15 @@
 <head>
-  <!-- ... -->
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/gh/jz1998/counthit@master/waline_custom.css"
+    href="https://cdn.jsdelivr.net/gh/jz1998/counthit@master/waline@1.1.1.css"
   />
-  <!-- ... -->
 </head>
 <div id="waline"></div>
 <script type="module">
   import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
 
   init({
-    dark: 'html[data-theme="dark"]',
+    dark: 'auto',
     lang: "zh-CN",
     el: "#waline",
     comment: true,

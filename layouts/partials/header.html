@@ -17,6 +17,11 @@
             {{ end }}
         </span>
         <span class="header-top-controls">
+            {{ with .Site.Home.OutputFormats.Get "rss" -}}
+                <a {{ printf "href=%q" .Permalink | safeHTMLAttr }} title="RSS" rel="me" style="text-decoration: none;">
+                {{ partial "font-awesome.html" (dict "iconName" "rss" "custom" false) }}
+                </a>
+            {{ end -}}
             {{ partial "theme-switcher.html" . }}
             {{ $languagesCount := $.Site.Home.AllTranslations }}
             {{ if gt $languagesCount 1 }}
