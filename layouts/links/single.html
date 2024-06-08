@@ -1,0 +1,19 @@
+{{ define "main" }}
+    {{ if .Menus }}
+        <nav class="post-navigation">
+        {{ range .Menus }}
+            <a href="{{ .ConfiguredURL | absLangURL }}" title="{{ .Title }}">{{ .Name | markdownify }}</a>
+        {{ end }}
+        </nav>
+    {{ end }}
+
+    <article class="post h-entry post-single">
+        <h1>链接</h1>
+        <div class="content e-content">
+            {{ .Content }}
+        </div>
+    </article>
+    {{ if not .Params.disableComments }}
+        {{ partial "comments.html" . }}
+    {{ end }}
+{{ end }}
