@@ -69,7 +69,7 @@
     /* Header */
     .common-header{padding:2em;margin:auto;max-width:1000px}
     header a{color:var(--font-color)}
-    header h1{font-size:2.35em;margin-top:1em;margin-bottom:0;font-weight:100}
+    header h1{font-size:1.35em;margin-top:1em;margin-bottom:0;font-weight:400}
     header h2{font-size:1em;margin:0;font-weight:normal}
     .header-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;vertical-align:middle}
     .header-top-right{display:flex;justify-content:center}
@@ -92,7 +92,7 @@
     .header-top-nav-items li{display:inline;font-size:18px;padding:5px}
     .header-top-nav-items li:not(:first-of-type){margin-left:.5em}
     .header-top-nav-items a:hover,.header-top-nav-items a:focus,.header-top-nav-items a:active{color:var(--link-state-color);border-bottom:1px solid var(--link-state-border-color);text-decoration:none}
-    .header-top-controls{margin-left:10px;padding:5px;}
+    .header-top-controls{margin-left:10px;padding:5px;align-self: center;}
     .inline-svg{display:inline-block;height:1.15rem;width:1.15rem;top:.15rem;position:inherit}
     .inline-svg a:hover,.inline-svg a:focus,.inline-svg a:active{color:inherit;border-bottom:none;text-decoration:none}
 
