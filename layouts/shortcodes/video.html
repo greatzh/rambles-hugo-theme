@@ -1,20 +1,23 @@
-<video 
-    class="video-shortcode" 
-    preload="{{ .Get "preload" | default "auto" }}" 
-    controls
->
-    <source 
-        src="{{ .Get "src" }}" 
-        type="{{ .Get "type" }}"
-        {{ if or (.Get "alt") (.Get "caption") }}
-            alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
-        {{ end }}
+<figure class="local-video-container">
+    <video 
+        class="local-video-shortcode" 
+        preload="{{ .Get "preload" | default "auto" }}" 
+        controls
     >
-    {{ i18n "videoIsNotSupported" }}
-</video>
-{{ if .Get "caption" }}
-    <figcaption>
-        {{ .Get "caption" | markdownify }}
-    </figcaption>
-{{ end }}
+        <source 
+            src="{{ .Get "src" }}" 
+            type="{{ .Get "type" }}"
+            {{ if or (.Get "alt") (.Get "caption") }}
+                alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+            {{ end }}
+        >
+        {{ i18n "videoIsNotSupported" }}
+    </video>
+    {{ if .Get "caption" }}
+        <figcaption class="video-caption">
+            {{ .Get "caption" | markdownify }}
+        </figcaption>
+    {{ end }}
+</figure>
+
 
