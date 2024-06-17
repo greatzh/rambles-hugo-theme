@@ -1,6 +1,6 @@
-<figure class="local-video-container">
+<figure class="video-shortcode-container" >
     <video 
-        class="local-video-shortcode" 
+        class="video-shortcode" 
         preload="{{ .Get "preload" | default "auto" }}" 
         controls
     >
@@ -15,9 +15,8 @@
     </video>
     {{ if .Get "caption" }}
         <figcaption class="video-caption">
-            {{ .Get "caption" | markdownify }}
+            {{ .Get "caption" | safeHTML }}
         </figcaption>
     {{ end }}
 </figure>
-
 
