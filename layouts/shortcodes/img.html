@@ -2,9 +2,6 @@
     <img class="img-shortcode" src="{{ .Get "url" }}" alt="{{ with .Get "alt"
     }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
     loading="lazy"> {{ if .Get "caption" }}
-    <figcaption class="video-caption">
-      {{ .Get "caption" | safeHTML }}
-    </figcaption>
     {{ end }}
 </figure>
 

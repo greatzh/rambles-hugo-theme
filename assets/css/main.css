@@ -195,23 +195,16 @@
     .highlight-copy-btn:hover{transition-duration:.1s;background-color:#666;border:1px solid var(--bq-color) !important;cursor:pointer}
     .highlight-copy-btn,.highlight-copy-btn svg{vertical-align:middle;margin:8px}
 
-
-    .video-shortcode-container{display:block;margin:0em;width:60%}
-    .video-shortcode-container-single{display:block;margin:0em;width:100%}
-    .video-shortcode{display:block;margin:0em;border-radius:10px;width: 100%;}
     .content.e-content.single-content img{width: 100%;height: max-content;}
-    .content.e-content.single-content figure{width: 100%;}
+    .content.e-content.single-content video{width: 100%;height: max-content;}
     .img-shortcode{display:block;margin:0em;border-radius:10px;max-width:100%;height:270px;object-fit:cover;}
     .img-shortcode-container {display: block;margin: 0em;width: auto;max-width: 100%; }
-    .video-caption {
+    .visual-caption {
         display: inline-block;
         margin-left: 0;
         word-wrap: break-word;
         max-width: 100%;
     }
-
-    .local-video-single {display:block;margin:0em;border-radius:10px;object-fit:cover;width:100%;height:auto}
-
     .iframe-container{position:relative;width:60%;padding-bottom:33.75%}
     .iframe-container iframe{position:absolute;border-radius:10px;margin-bottom:20px;top:0;left:0;width:100%;height:100%}
     .table-container{overflow-x:auto;max-width:100%;border-radius:10px;font:400 0.85em/1.05 ibm plex mono,monospace}
@@ -276,7 +269,7 @@
         .post-card-date{display:flex;align-items:center;justify-content:space-between}
         .iframe-container{width:100%;padding-bottom:56.25%}
         .img-shortcode{height: 180px;}
-        .video-caption{margin:0 auto}
+        .visual-caption{margin:0 auto}
     }
 
     @media (max-width: 768px){

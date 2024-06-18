@@ -1,6 +1,6 @@
-<figure class="video-shortcode-container" >
+<figure class="img-shortcode-container" >
     <video 
-        class="video-shortcode" 
+        class="img-shortcode" 
         preload="{{ .Get "preload" | default "auto" }}" 
         controls
     >
@@ -13,10 +13,5 @@
         >
         {{ i18n "videoIsNotSupported" }}
     </video>
-    {{ if .Get "caption" }}
-        <figcaption class="video-caption">
-            {{ .Get "caption" | safeHTML }}
-        </figcaption>
-    {{ end }}
 </figure>
 
