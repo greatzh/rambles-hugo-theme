@@ -195,8 +195,8 @@
     .highlight-copy-btn:hover{transition-duration:.1s;background-color:#666;border:1px solid var(--bq-color) !important;cursor:pointer}
     .highlight-copy-btn,.highlight-copy-btn svg{vertical-align:middle;margin:8px}
 
-    .content.e-content.single-content img{width: 100%;height: max-content;}
-    .content.e-content.single-content video{width: 100%;height: max-content;}
+    .content.e-content.single-content img{width: 100%;height: auto;}
+    .content.e-content.single-content video{width: 100%;height: auto;}
     .img-shortcode{display:block;margin:0em;border-radius:10px;max-width:100%;height:270px;object-fit:cover;}
     .img-shortcode-container {display: block;margin: 0em;width: auto;max-width: 100%; }
     .visual-caption {
