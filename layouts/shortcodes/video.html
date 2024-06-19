@@ -3,6 +3,8 @@
         class="img-shortcode" 
         preload="{{ .Get "preload" | default "auto" }}" 
         controls
+        poster="{{ .Get "poster" }}"
+        controlsList="nodownload"
     >
         <source 
             src="{{ .Get "src" }}" 

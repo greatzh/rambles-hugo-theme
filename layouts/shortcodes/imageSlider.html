@@ -1,4 +1,0 @@
-{{ $images := findRE "<img" .Inner }} 
-<div class="image-container {{ if eq (len $images) 1 }} single-image{{ end }}">
-    {{ .Inner }}
-</div>
