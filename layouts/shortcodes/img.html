@@ -1,7 +1,13 @@
 <figure class="img-shortcode-container">
-    <img class="img-shortcode" src="{{ .Get "url" }}" alt="{{ with .Get "alt"
-    }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
-    loading="lazy"> {{ if .Get "caption" }}
-    {{ end }}
+    <img class="img-shortcode" 
+     src="{{ .Get "url" }}" 
+     srcset="{{ if .Get "smallUrl" }}{{ .Get "smallUrl" }} 300w, {{ else }}{{ .Get "url" }} 300w, {{ end }}
+         {{ if .Get "mediumUrl" }}{{ .Get "mediumUrl" }} 500w, {{ else }}{{ .Get "url" }} 500w, {{ end }}
+         {{ .Get "url" }} 1000w"
+     sizes="(max-width: 600px) 480px, 
+        (max-width: 900px) 800px, 
+        1200px"
+     alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+     title="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
+     loading="lazy">
 </figure>
-

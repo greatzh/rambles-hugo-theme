@@ -5,13 +5,11 @@
         controls
         poster="{{ .Get "poster" }}"
         controlsList="nodownload"
+        title="{{ .Get "caption" | markdownify | plainify }}"
     >
         <source 
             src="{{ .Get "src" }}" 
             type="{{ .Get "type" }}"
-            {{ if or (.Get "alt") (.Get "caption") }}
-                alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" | markdownify | plainify }}{{ end }}"
-            {{ end }}
         >
         {{ i18n "videoIsNotSupported" }}
     </video>
