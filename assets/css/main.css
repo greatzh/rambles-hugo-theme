@@ -115,10 +115,10 @@
     .post-title.favorite.draft::before{content:"⭐ ✍️";display:inline-block;margin-left:.2em}
     .post-title-remark{margin-top:0;margin-bottom:0;font:444 20px/1.75 Georgia,Xin Gothic,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif}
     .post-title-remark-single{margin-top:0;margin-bottom:0;color:var(--link-state-color);font:900 1.6rem/1.75 Georgia,Xin Gothic,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif}
-    article:not(:last-of-type){padding-bottom:2em}
+    article:not(:last-of-type){padding-bottom:3em}
     article header h1{font-size:1.25em;line-height:1.1em;margin-bottom:.5em;font-weight:600;display:inline}
     article header h1 a{color:var(--font-color);border:none;text-decoration:none}
-    .post-single{align-items:center;max-width:100%;margin-top:15vw;margin-bottom:15vw;margin-left:auto;margin-right:auto}
+    .post-single{align-items:center;max-width:100%;margin-top:18vw;margin-bottom:15vw;margin-left:auto;margin-right:auto}
     .post h1,.post h2,.post h3,.post h4,.post h5,.post h6{position:relative}
     .post h1 a,.post h2 a,.post h3 a,.post h4 a,.post h5 a,.post h6 a{opacity:0;position:absolute;left:-1.2rem}
     .post h1:hover a,.post h2:hover a,.post h3:hover a,.post h4:hover a,.post h5:hover a,.post h6:hover a{opacity:1;border-bottom:none}
