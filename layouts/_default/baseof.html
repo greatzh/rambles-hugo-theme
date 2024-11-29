@@ -24,5 +24,9 @@
             {{ partial "footer.html" . }}
         {{ end }}
     </div>
+    <!-- Modal for image preview -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img class="modal-content" id="modalImage">
+    </div>
 </body>
 </html>
