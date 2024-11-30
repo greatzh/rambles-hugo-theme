@@ -28,9 +28,17 @@
 {{ end }}
 
 {{ end }}
+:root {
+    --font-color: #333;
+    --bg-color: #fff;
+}
 
+[data-theme="dark"] {
+    --font-color: #eee;
+    --bg-color: #121212;
+}
     /* Basic */
-    html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;color:var(--font-color);background:var(--bg-color)}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}.container{max-width:45em;margin:0 auto}main{outline:none}
+    html{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased;color:var(--font-color);background:var(--bg-color);transition: background-color 0.2s, color 0.2s;}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section{display:block}.container{max-width:45em;margin:0 auto}main{outline:none}
 
     /* Headers */
     h1{font-size:1.35em;font-family:-apple-system,BlinkMacSystemFont,PingFang SC,Hiragino Sans GB,Microsoft JhengHei,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,Arial,sans-serif}h2{font-size:1.2em;font-family:"PingFang SC","Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}h3{font-size:1.1em}

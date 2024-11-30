@@ -11,69 +11,101 @@
 {{ end }}
 
 <script>
-const STORAGE_KEY = 'user-color-scheme'
-const defaultTheme = {{ $style }}
+    const STORAGE_KEY = 'user-color-scheme'
+    const defaultTheme = '{{ $style }}'
 
-let currentTheme
-let switchButton
-let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
+    let currentTheme
+    let switchButton
+    let autoDefinedScheme = window.matchMedia('(prefers-color-scheme: dark)')
 
-const autoChangeScheme = e => {
-    currentTheme = e.matches ? 'dark' : 'light'
-    document.documentElement.setAttribute('data-theme', currentTheme)
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    switchButton = document.querySelector('.theme-switcher')
-    currentTheme = detectCurrentScheme()
-    if (currentTheme == 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark')
-    }
-    if (currentTheme == 'auto') {
-        autoChangeScheme(autoDefinedScheme);
-        autoDefinedScheme.addListener(autoChangeScheme);
+    // 自动根据系统设置更新主题和状态栏颜色
+    const autoChangeScheme = e => {
+        currentTheme = e.matches ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', currentTheme)
+        setThemeColor(currentTheme)
+        updateBackgroundColor(currentTheme)
     }
 
-    if (switchButton) {
-        switchButton.addEventListener('click', switchTheme, false)
+    // 设置浏览器状态栏颜色
+    function setThemeColor(theme) {
+        let themeColorMeta = document.querySelector('meta[name="theme-color"]')
+        if (!themeColorMeta) {
+            themeColorMeta = document.createElement('meta')
+            themeColorMeta.name = 'theme-color'
+            document.head.appendChild(themeColorMeta)
+        }
+        themeColorMeta.setAttribute('content', theme === 'dark' ? '#121212' : '#ffffff')
     }
-  
-    showContent()
-})
 
-function detectCurrentScheme() {
-    if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
-        return localStorage.getItem(STORAGE_KEY)
-    } 
-    if (defaultTheme) {
-        return defaultTheme
-    } 
-    if (!window.matchMedia) {
+    // 更新背景颜色（可选，如果 CSS 已实现响应式，可省略此函数）
+    function updateBackgroundColor(theme) {
+        document.body.style.backgroundColor = theme === 'dark' ? '#121212' : '#ffffff'
+        document.body.style.color = theme === 'dark' ? '#ffffff' : '#121212'
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        switchButton = document.querySelector('.theme-switcher')
+        currentTheme = detectCurrentScheme()
+        
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark')
+            setThemeColor('dark')
+        } else if (currentTheme === 'auto') {
+            autoChangeScheme(autoDefinedScheme)
+            autoDefinedScheme.addListener(autoChangeScheme)
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light')
+            setThemeColor('light')
+        }
+
+        if (switchButton) {
+            switchButton.addEventListener('click', switchTheme, false)
+        }
+
+        showContent()
+    })
+
+    // 检测当前主题
+    function detectCurrentScheme() {
+        if (localStorage !== null && localStorage.getItem(STORAGE_KEY)) {
+            return localStorage.getItem(STORAGE_KEY)
+        } 
+        if (defaultTheme) {
+            return defaultTheme
+        } 
+        if (!window.matchMedia) {
+            return 'light'
+        } 
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark'
+        }
         return 'light'
-    } 
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark'
     }
-    return 'light'
-}
 
-function switchTheme(e) {
-    if (currentTheme == 'dark') {
-        if (localStorage !== null)
-            localStorage.setItem(STORAGE_KEY, 'light')
-        document.documentElement.setAttribute('data-theme', 'light')
-        currentTheme = 'light'
-    } else {
-        if (localStorage !== null)
-            localStorage.setItem(STORAGE_KEY, 'dark')
-        document.documentElement.setAttribute('data-theme', 'dark')
-        currentTheme = 'dark'
+    // 切换主题
+    function switchTheme(e) {
+        if (currentTheme === 'dark') {
+            if (localStorage !== null)
+                localStorage.setItem(STORAGE_KEY, 'light')
+            document.documentElement.setAttribute('data-theme', 'light')
+            currentTheme = 'light'
+        } else {
+            if (localStorage !== null)
+                localStorage.setItem(STORAGE_KEY, 'dark')
+            document.documentElement.setAttribute('data-theme', 'dark')
+            currentTheme = 'dark'
+        }
+        setThemeColor(currentTheme) // 更新状态栏颜色
+        updateBackgroundColor(currentTheme) // 更新背景颜色（如 CSS 未处理）
     }
-}
 
-function showContent() {
-    document.body.style.visibility = 'visible';
-    document.body.style.opacity = 1;
-}
+    function showContent() {
+        document.body.style.visibility = 'visible';
+        document.body.style.opacity = 1;
+    }
+
+    // 监听系统主题变化
+    autoDefinedScheme.addEventListener('change', autoChangeScheme)
 </script>
+
 {{ end }}
