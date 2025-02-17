@@ -26,7 +26,7 @@
             <ul class="post-categories">
                 {{ range $cat_name := .Params.categories }}
                     {{ $cat := ($.Site.GetPage (printf "/categories/%s" $cat_name | urlize )) }}
-                    <li><a href="{{ $cat.Permalink }}">「{{ i18n $cat.Title | default $cat_name }}」</a></li>
+                    <li><a class="post-categories-text" href="{{ $cat.Permalink }}">{{ i18n $cat.Title | default $cat_name }}</a></li>
                 {{ end }}
             </ul>
         {{ end }}
@@ -34,7 +34,7 @@
             <ul class="post-tags">
                 {{ range $tag_name := .Params.tags }}
                     {{ $tag := ($.Site.GetPage (printf "/tags/%s" $tag_name | urlize )) }}
-                    <li><a href="{{ $tag.Permalink }}">#{{ i18n $tag.Title | default $tag_name }}</a></li>
+                    <li><a class="post-categories-text" href="{{ $tag.Permalink }}">#{{ i18n $tag.Title | default $tag_name }}</a></li>
                 {{ end }}
             </ul>
         {{ end }}

@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+<div class="post-single">
+  <h1 class="title-bar_title"><a href="/categories">分类</a></h1>
+
+  <ul class="terms tag-grid">
+    {{ range .Site.Taxonomies.categories }} {{ $postsNum := len (where .Pages
+    "Params.hidden" "!=" true) }} {{ if gt $postsNum 0 }}
+    <li style="color: var(--bg-color)">
+      <a href="{{ .Page.RelPermalink }}">
+        <div>
+          {{ i18n .Page.Title | markdownify }}
+          <sup>({{ $postsNum }})</sup>
+        </div>
+      </a>
+    </li>
+    {{ end}} {{ end }}
+  </ul>
+  <h1 class="title-bar_title"><a href="/tags">标签</a></h1>
+
+  <ul class="terms tag-grid">
+    {{ range .Site.Taxonomies.tags }} {{ $postsNum := len (where .Pages
+    "Params.hidden" "!=" true) }} {{ if gt $postsNum 0 }}
+    <li style="color: var(--bg-color)">
+      <a href="{{ .Page.RelPermalink }}">
+        <div>
+          #{{ i18n .Page.Title | markdownify }}
+          <sup>({{ $postsNum }})</sup>
+        </div>
+      </a>
+    </li>
+    {{ end}} {{ end }}
+  </ul>
+</div>
+{{ end }}
