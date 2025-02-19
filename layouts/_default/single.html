@@ -30,7 +30,7 @@
 <h3 class="read-next-title">{{ i18n "readNext" }}</h3>
 <ul class="read-next-posts">
     {{ range . }}
-    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    <li><a href="{{ .RelPermalink }}">#{{ .Title }}{{ if .Params.remark }}  {{ .Params.remark }}{{ end }}</a></li>
     {{ end }}
 </ul>
 {{ end }}
