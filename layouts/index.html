@@ -3,7 +3,7 @@
         {{ .Content }}
     </div>
 
-    <div class="articles h-feed">
+    <div class="articles h-feed post-single">
         {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
         {{ $pages = where $pages "Params.hidden" "!=" true }}
         {{ $paginator := .Paginate $pages }}

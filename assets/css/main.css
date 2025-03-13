@@ -75,14 +75,14 @@
     hr{color:var(--hr-color);background-color:var(--hr-color);border:none;height:1px}
 
     /* Header */
-    .common-header{padding:2em;margin:auto}
+    .common-header{padding:3em;margin:auto;max-width:1000px;}
     header a{color:var(--font-color)}
-    header h1{font-size:1.35em;margin-top:1em;margin-bottom:0;font-weight:400}
+    header h1{font-size:1.35em;margin-top:1em;margin-bottom:0;font-weight:600}
     header h2{font-size:1em;margin:0;font-weight:normal}
-    .header-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;vertical-align:middle}
+    .header-top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;vertical-align:middle;flex-direction: column;}
     .header-top-right{display:flex;justify-content:center}
-    .header-top ul{margin-top:0;margin-bottom:0}
-    .site-title{display:inline;white-space:nowrap;font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto}
+    .header-top ul{margin-top:0;margin-bottom:0;font-weight:600}
+    .site-title{padding:5px;display:inline;white-space:nowrap;font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto}
     header nav:not(:empty){background:var(--nav-bg-color);margin-top:1em;max-width:100%;text-align:center;padding:.5em 0}
     header nav a{display:inline-block;margin:0 2.5%}
     .header-in-list{ color: var(--pagination-bg-color);}
@@ -105,7 +105,7 @@
     .inline-svg a:hover,.inline-svg a:focus,.inline-svg a:active{color:inherit;border-bottom:none;text-decoration:none}
 
     /* Pages */
-    main h1{margin-top:1em;font-weight:normal;line-height:1.1em;margin-bottom:.5em;font-weight:600}
+    main h1{margin-top:1em;line-height:1.1em;margin-bottom:.5em;font-weight:600}
     .post-short-list:first-of-type{margin-top:1em}
     .post-short-list img{max-width:100%;display:block;height:auto;margin:0 auto .3em}
     .post-short-list video{max-width:100%;display:block;height:auto;margin:0 auto .3em}
@@ -124,7 +124,7 @@
     .post-title.favorite.draft::before{content:"⭐ ✍️";display:inline-block;margin-left:.2em}
     .post-title-remark{margin-top:0;margin-bottom:0;font:444 1.25rem/1.75 Georgia,Xin Gothic,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif}
     .post-title-remark-single{margin-top:0;margin-bottom:0;color:var(--link-state-color);font:900 1.6rem/1.75 Georgia,Xin Gothic,PingFang SC,Hiragino Sans GB,Droid Sans Fallback,Microsoft YaHei,sans-serif}
-    article:not(:last-of-type){padding-bottom:4rem}
+    article:not(:last-of-type){padding-bottom:5rem}
     article header h1{font-size:1.25em;line-height:1.1em;margin-bottom:.5em;font-weight:600;display:inline}
     article header h1 a{color:var(--font-color);border:none;text-decoration:none}
     .post-single{align-items:center;max-width:100%;margin-top:18vw;margin-bottom:15vw;margin-left:auto;margin-right:auto}
@@ -260,7 +260,7 @@
         .post-navigation a{margin-left:.5em}
         .post-pagination .pagination-item{width:90%;margin: auto;}
         .header-top-controls{display:flex;justify-content:space-between;align-items:center}
-        .header-top-left{display:flex;justify-content:space-between;align-items:center;flex-direction:column}
+        .header-top-left{display:flex;justify-content:center;align-items:center;flex-direction:row}
         .header-top-right{display:flex;justify-content:center}
         .header-top{display:block}
         .social-icons{padding:0;margin:0}
@@ -279,7 +279,7 @@
 
     @media (min-width: 2048px) {
         .container {max-width: 75rem;position: relative;}
-        .common-header {max-width: 1200px;}
+        .common-header {max-width: 1400px;}
     }
 
 {{ range site.Params.customCSS }}

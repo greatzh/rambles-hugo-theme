@@ -1,6 +1,18 @@
 <div class="header-top">
     <span class="header-top-left">
         {{ partial "site-title.html" . }}
+        <span class="header-top-controls">
+            {{ with .Site.Home.OutputFormats.Get "rss" -}}
+                <a {{ printf "href=%q" .Permalink | safeHTMLAttr }} title="RSS" rel="me" style="text-decoration: none;">
+                {{ partial "font-awesome.html" (dict "iconName" "rss" "custom" false) }}
+                </a>
+            {{ end -}}
+            {{ partial "theme-switcher.html" . }}
+            {{ $languagesCount := $.Site.Home.AllTranslations }}
+            {{ if gt $languagesCount 1 }}
+            {{ partial "language-switcher.html" . }}
+            {{ end }}
+        </span>
     </span>
     <span class="header-top-right">
         <span class="header-top-nav">
@@ -14,18 +26,6 @@
             </ul>
             {{ else }}
             <ul></ul>
-            {{ end }}
-        </span>
-        <span class="header-top-controls">
-            {{ with .Site.Home.OutputFormats.Get "rss" -}}
-                <a {{ printf "href=%q" .Permalink | safeHTMLAttr }} title="RSS" rel="me" style="text-decoration: none;">
-                {{ partial "font-awesome.html" (dict "iconName" "rss" "custom" false) }}
-                </a>
-            {{ end -}}
-            {{ partial "theme-switcher.html" . }}
-            {{ $languagesCount := $.Site.Home.AllTranslations }}
-            {{ if gt $languagesCount 1 }}
-            {{ partial "language-switcher.html" . }}
             {{ end }}
         </span>
     </span>
