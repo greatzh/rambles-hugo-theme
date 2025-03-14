@@ -15,4 +15,9 @@
     --border-color: #d9d9d9; /* 边框色 */
     --code-background: #f5f5f5; /* 代码块背景（明亮模式） */
     --code-text: #d14; /* 代码文本颜色（明亮模式，偏红的语法高亮） */
+    --theme-color-level0: #ebedf0;
+    --theme-color-level1: #69b1ff;
+    --theme-color-level2: #1677ff;
+    --theme-color-level3: #003eb3;
+    --theme-color-level4: #001d66;
 }

@@ -16,6 +16,7 @@
       </div>
       <div class="year-selector-container">
         <select id="year-selector" class="year-selector">
+          <option value="last365">过去一年</option>
           {{ range $pagesByYear }}
           <option value="{{ .Key }}">{{ .Key }}年</option>
           {{ end }}
@@ -59,8 +60,8 @@
     <!-- 日期详情区域 - 直接显示在热力图下方 -->
     <div id="day-details" class="day-details" style="display: none">
       <div class="day-details-header">
-        <span id="day-details-date"></span>
         <span id="day-details-count"></span>
+        <span id="day-details-date"></span>
         <span class="day-details-close" onclick="closeDayDetails()">×</span>
       </div>
       <div id="day-details-content" class="day-details-content"></div>
@@ -106,80 +107,9 @@
       {{ end }}
     }
   </script>
-
-  <p>
-    此处仅显示碎碎念标题归档。前往
-    <a href="/full" style="font-weight: bolder">Full Content Archive 全收录</a>
-    可在一个页面检索所有碎碎念正文内容，但加载将会需要花费一些时间（~15s，因不同设备有所差异）和内存空间（~1.2G）。
-  </p>
-  <div
-    style="cursor: pointer; color: var(--theme-secondary)"
-    onclick="toggleAllGroups()"
-  >
-    全部展开/全部收起
-  </div>
-  {{ range $pagesByYear }}
-  <h2 class="year-group" onclick="toggleGroup(this)">
-    {{ .Key }} ({{ len .Pages }})
-  </h2>
-  <div class="months-group" style="display: none">
-    {{ $pagesByMonth := .Pages.GroupByDate "Jan" }} {{ range $pagesByMonth }}
-    <h3
-      class="month-group"
-      onclick="toggleGroup(this)"
-      style="margin-left: 10px"
-    >
-      {{ .Key }} ({{ len .Pages }})
-    </h3>
-    <div class="days-group" style="display: none; margin-left: 20px">
-      {{ $pagesByDay := .Pages.GroupByDate "02" }} {{ range $pagesByDay }}
-      <h4
-        class="day-group"
-        onclick="toggleGroup(this)"
-        style="margin-left: 20px"
-      >
-        {{ .Key }}日 ({{ len .Pages }})
-      </h4>
-      <div class="pages-group" style="display: none; margin-left: 30px">
-        {{ range .Pages }}
-        <div class="post-title">
-          <a href="{{ .Permalink }}"
-            >#{{ .Title }}{{ if .Params.remark }} {{ .Params.remark }}{{ end
-            }}</a
-          >
-        </div>
-        {{ end }}
-      </div>
-      {{ end }}
-    </div>
-    {{ end }}
-  </div>
-  {{ end }}
 </div>
 
 <script>
-  function toggleGroup(element) {
-    var pagesGroup = element.nextElementSibling;
-    if (pagesGroup.style.display === "none") {
-      pagesGroup.style.display = "block";
-    } else {
-      pagesGroup.style.display = "none";
-    }
-  }
-
-  function toggleAllGroups() {
-    var groups = document.querySelectorAll(
-      ".months-group, .days-group, .pages-group"
-    );
-    for (var i = 0; i < groups.length; i++) {
-      if (groups[i].style.display === "none") {
-        groups[i].style.display = "block";
-      } else {
-        groups[i].style.display = "none";
-      }
-    }
-  }
-
   // GitHub 风格贡献图表的脚本
   document.addEventListener("DOMContentLoaded", function () {
     // 从Hugo生成的JSON数据中获取数据
@@ -200,14 +130,36 @@
 
       // 计算该年度的总碎碎念数量
       let totalCount = 0;
-      if (contributionData[year]) {
-        Object.values(contributionData[year]).forEach((dayData) => {
-          totalCount += dayData.count;
-        });
-      }
 
-      // 更新显示
-      summaryElement.textContent = `${year}年 有 ${totalCount} 条碎碎念`;
+      if (year === "last365") {
+        // 计算过去365天的总碎碎念数量
+        const today = new Date();
+        const oneYearAgo = new Date();
+        oneYearAgo.setDate(today.getDate() - 365);
+
+        // 遍历所有年份的数据
+        Object.keys(contributionData).forEach((yearKey) => {
+          Object.keys(contributionData[yearKey]).forEach((dateStr) => {
+            const date = new Date(dateStr);
+            if (date >= oneYearAgo && date <= today) {
+              totalCount += contributionData[yearKey][dateStr].count;
+            }
+          });
+        });
+
+        // 更新显示
+        summaryElement.textContent = `过去一年有 ${totalCount} 条碎碎念`;
+      } else {
+        // 计算特定年份的总碎碎念数量
+        if (contributionData[year]) {
+          Object.values(contributionData[year]).forEach((dayData) => {
+            totalCount += dayData.count;
+          });
+        }
+
+        // 更新显示
+        summaryElement.textContent = `${year}年 有 ${totalCount} 条碎碎念`;
+      }
     }
 
     // 渲染贡献图
@@ -246,16 +198,26 @@
         graphContainer.appendChild(row);
       }
 
-      // 计算当年的第一天是星期几
-      const firstDayOfYear = new Date(`${year}-01-01`);
+      let firstDayOfYear, lastDayOfYear, totalWeeks;
+
+      if (year === "last365") {
+        // 过去一年的日期范围
+        lastDayOfYear = new Date(); // 今天
+        firstDayOfYear = new Date();
+        firstDayOfYear.setDate(lastDayOfYear.getDate() - 365); // 365天前
+      } else {
+        // 特定年份的日期范围
+        firstDayOfYear = new Date(`${year}-01-01`);
+        lastDayOfYear = new Date(`${year}-12-31`);
+      }
+
+      // 计算第一天是星期几
       const firstDayWeekday = firstDayOfYear.getDay(); // 0 = 周日, 1 = 周一, ...
 
-      // 计算当年有多少周
-      const lastDayOfYear = new Date(`${year}-12-31`);
-      const lastDayWeekday = lastDayOfYear.getDay();
+      // 计算总天数和总周数
       const totalDays =
         (lastDayOfYear - firstDayOfYear) / (24 * 60 * 60 * 1000) + 1;
-      const totalWeeks = Math.ceil((totalDays + firstDayWeekday) / 7);
+      totalWeeks = Math.ceil((totalDays + firstDayWeekday) / 7);
 
       // 为每个月添加日期单元格
       const months = [
@@ -280,15 +242,16 @@
         .map(() => Array(totalWeeks).fill(null));
 
       // 填充单元格
-      let currentDate = new Date(`${year}-01-01`);
-      const endDate = new Date(`${year}-12-31`);
+      let currentDate = new Date(firstDayOfYear);
+      const endDate = new Date(lastDayOfYear);
 
       while (currentDate <= endDate) {
         const month = currentDate.getMonth() + 1; // 1-12
         const day = currentDate.getDate();
         const weekday = currentDate.getDay(); // 0-6
+        const currentYear = currentDate.getFullYear().toString();
 
-        // 计算当前日期是当年的第几周
+        // 计算当前日期是第几周
         const dayOfYear =
           Math.floor((currentDate - firstDayOfYear) / (24 * 60 * 60 * 1000)) +
           1;
@@ -296,13 +259,14 @@
 
         // 如果是每月第一天，记录其所在的周
         if (day === 1) {
-          monthFirstWeek[month] = weekOfYear;
+          monthFirstWeek[`${currentYear}-${month}`] = weekOfYear;
         }
 
         // 创建单元格
         const dateStr = currentDate.toISOString().split("T")[0]; // YYYY-MM-DD
+        const yearOfDate = dateStr.substring(0, 4);
         const dayData =
-          contributionData[year] && contributionData[year][dateStr];
+          contributionData[yearOfDate] && contributionData[yearOfDate][dateStr];
         const count = dayData ? dayData.count : 0;
 
         const cell = document.createElement("div");
@@ -360,25 +324,39 @@
       }
 
       // 添加月份标签
-      for (let month = 1; month <= 12; month++) {
-        if (monthFirstWeek[month] !== undefined) {
+      // 如果是过去一年，需要显示跨年的月份标签
+      const monthsToShow = new Set();
+      let currentMonthDate = new Date(firstDayOfYear);
+      while (currentMonthDate <= endDate) {
+        const monthYear = `${currentMonthDate.getFullYear()}-${
+          currentMonthDate.getMonth() + 1
+        }`;
+        monthsToShow.add(monthYear);
+        // 移动到下个月
+        currentMonthDate.setMonth(currentMonthDate.getMonth() + 1);
+      }
+
+      // 添加月份标签
+      monthsToShow.forEach((monthYear) => {
+        const [yearStr, monthNum] = monthYear.split("-").map(Number);
+        if (monthFirstWeek[monthYear] !== undefined) {
           const monthLabel = document.createElement("div");
           monthLabel.className = "month-label";
-          monthLabel.textContent = months[month - 1];
-          monthLabel.dataset.month = month;
+          monthLabel.textContent = months[monthNum - 1];
+          monthLabel.dataset.month = monthYear;
 
           // 计算月份标签的位置
-          const weekPosition = monthFirstWeek[month];
+          const weekPosition = monthFirstWeek[monthYear];
 
           // 设置月份标签的位置
-          const cellWidth = window.innerWidth <= 840 ? 15 : 18; // 移动设备上单元格宽度更小
-          const labelOffset = window.innerWidth <= 840 ? 25 : 35; // 移动设备上标签偏移更小
+          const cellWidth = 18; // 移动设备上单元格宽度更小
+          const labelOffset = 35; // 移动设备上标签偏移更小
           monthLabel.style.left = `${weekPosition * cellWidth + labelOffset}px`;
 
           // 将月份标签添加到月份行
           monthsRow.appendChild(monthLabel);
         }
-      }
+      });
 
       // 添加窗口大小变化监听器，调整月份标签位置
       window.addEventListener("resize", function () {
@@ -386,11 +364,11 @@
           ".month-label[data-month]"
         );
         monthLabels.forEach((label) => {
-          const month = parseInt(label.dataset.month);
-          const weekPosition = monthFirstWeek[month];
+          const monthYear = label.dataset.month;
+          const weekPosition = monthFirstWeek[monthYear];
           if (weekPosition !== undefined) {
-            const cellWidth = window.innerWidth <= 840 ? 15 : 18;
-            const labelOffset = window.innerWidth <= 840 ? 25 : 35;
+            const cellWidth = 18;
+            const labelOffset = 35;
             label.style.left = `${weekPosition * cellWidth + labelOffset}px`;
           }
         });
@@ -420,11 +398,11 @@
 
       // 设置日期和文章数量
       const date = new Date(dateStr);
-      const formattedDate = `${date.getFullYear()}年${
+      const formattedDate = `${date.getFullYear()}-${
         date.getMonth() + 1
-      }月${date.getDate()}日`;
+      }-${date.getDate()}`;
       dayDetailsDate.textContent = formattedDate;
-      dayDetailsCount.textContent = `${count} 篇碎碎念`;
+      dayDetailsCount.textContent = `${count} 条碎碎念`;
 
       // 清空并填充内容
       dayDetailsContent.innerHTML = "";
@@ -461,7 +439,8 @@
 
     // 初始渲染最新年份的贡献图
     if (yearSelector.options.length > 0) {
-      const initialYear = yearSelector.options[0].value;
+      // 默认选择"过去一年"选项
+      const initialYear = "last365";
       renderContributionGraph(initialYear);
       updateContributionSummary(initialYear);
     }
@@ -470,28 +449,11 @@
 
 <style>
   /* GitHub 风格贡献图表的样式 */
-  :root {
-    --theme-color-level0: #ebedf0;
-    --theme-color-level1: #9be9a8;
-    --theme-color-level2: #40c463;
-    --theme-color-level3: #30a14e;
-    --theme-color-level4: #216e39;
-  }
-
-  [data-theme="dark"] {
-    --theme-color-level0: #161b22;
-    --theme-color-level1: #0e4429;
-    --theme-color-level2: #006d32;
-    --theme-color-level3: #26a641;
-    --theme-color-level4: #39d353;
-  }
 
   .github-style-contribution {
     margin: 2rem 0;
     padding: 1rem;
     border-radius: 8px;
-    background-color: var(--background-color);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
 
   .contribution-header {
@@ -515,6 +477,13 @@
     color: var(--text-primary);
     font-size: 1rem;
     cursor: pointer;
+    appearance: auto; /* 保持原生下拉样式 */
+  }
+
+  /* 修复下拉选项在黑暗模式下的颜色问题 */
+  .year-selector option {
+    background-color: var(--background-color);
+    color: var(--text-primary);
   }
 
   .contribution-graph-container {
@@ -525,6 +494,24 @@
   .contribution-graph-scroll {
     overflow-x: auto;
     padding-bottom: 0.5rem;
+    /* 自定义滚动条样式 */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: var(--border-color) var(--background-light); /* Firefox */
+  }
+
+  /* Webkit浏览器的滚动条样式 */
+  .contribution-graph-scroll::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .contribution-graph-scroll::-webkit-scrollbar-track {
+    background: var(--background-light);
+    border-radius: 4px;
+  }
+
+  .contribution-graph-scroll::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-radius: 4px;
   }
 
   .contribution-graph {
@@ -590,6 +577,7 @@
 
   .contribution-cell:not(.empty):hover {
     transform: scale(1.2);
+    transition: transform 0.1s ease;
   }
 
   .contribution-legend {
@@ -617,10 +605,6 @@
 
   .day-details {
     margin-top: 1rem;
-    background-color: var(--background-color);
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
   }
 
   .day-details-header {
@@ -629,8 +613,6 @@
     align-items: center;
     padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--border-color);
-    background-color: var(--background-muted);
-    border-radius: 8px 8px 0 0;
   }
 
   .day-details-close {
@@ -673,19 +655,6 @@
 
     .year-selector {
       width: 100%;
-    }
-
-    .weekday-label {
-      width: 20px;
-      font-size: 0.7rem;
-    }
-
-    .months-row {
-      grid-template-columns: 20px repeat(53, 15px); /* 调整移动端的网格尺寸 */
-    }
-
-    .month-label {
-      font-size: 0.7rem;
     }
   }
 </style>

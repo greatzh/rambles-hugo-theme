@@ -14,3 +14,8 @@
 --border-color: #334d66; /* 边框色（蓝灰色） */
 --code-background: #1e1e2e; /* 代码块背景（黑暗模式） */
 --code-text: #ffcc99; /* 代码文本颜色（黑暗模式，暖色调） */
+--theme-color-level0: #001d66;;
+--theme-color-level1: #003eb3;
+--theme-color-level2: #1677ff;
+--theme-color-level3: #69b1ff;
+--theme-color-level4: #bae0ff;
