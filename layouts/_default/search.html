@@ -20,12 +20,12 @@
 </div>
 
 <style>
-/* 搜索样式 */
-.search-container {
-  margin-bottom: 2rem;
-}
+  /* 搜索样式 */
+  .search-container {
+    margin-bottom: 2rem;
+  }
 
-#search-input {
+  #search-input {
     width: 90%;
     padding: 0.8rem;
     font-size: 1rem;
@@ -39,55 +39,53 @@
     color: var(--text-color);
   }
 
-#search-results {
-  margin-top: 1rem;
-}
+  #search-results {
+    margin-top: 1rem;
+  }
 
-.search-results-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .search-results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
 
-.search-result-item {
-  padding: 1rem;
-  margin-bottom: 1rem;  
-  transition: all 0.2s ease;
-  border-radius: 0.5rem;
-}
+  .search-result-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+    border-radius: 0.5rem;
+  }
 
-.search-result-item:hover {
-  background-color: var(--background-muted);
-}
+  .search-result-item:hover {
+    background-color: var(--background-muted);
+  }
 
-.search-result-title {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: var(--link-color);
-  text-decoration: none;
-  border-bottom: 0px;
-}
+  .search-result-title {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--link-color);
+    text-decoration: none;
+    border-bottom: 0px;
+  }
 
-.search-result-date {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  margin-bottom: 0.5rem;
-}
+  .search-result-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
 
-.search-result-description {
-  font-size: 1rem;
-  color: var(--text-secondary);
-}
+  .search-result-description {
+    font: 400 1rem/1.75 Microsoft JhengHei, monospace;
+    color: var(--text-secondary);
+  }
 
-.search-no-results {
-  padding: 1rem;
-  text-align: center;
-  color: var(--text-muted);
-}
-
+  .search-no-results {
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-muted);
+  }
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
