@@ -1,65 +1,83 @@
 {{ define "main" }}
-    <div class="homepage-content">
-        {{ .Content }}
-    </div>
+<div class="homepage-content">{{ .Content }}</div>
 
-    <div class="articles h-feed post-single">
-        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
-        {{ $pages = where $pages "Params.hidden" "!=" true }}
-        {{ $pagesByYear := $pages.GroupByDate "2006" }}
-        <h1>Archive</h1>
-        <p>此处仅显示碎碎念标题归档。前往 <a href="/full" style="font-weight:bolder;">Full Content Archive 全收录</a> 可在一个页面检索所有碎碎念正文内容，但加载将会需要花费一些时间（~15s，因不同设备有所差异）和内存空间（~1.2G）。</p>
-        <div style="cursor: pointer; color: var(--link-state-color)" onclick="toggleAllGroups()">全部展开/全部收起</div>
-        {{ range $pagesByYear }}
-            <h2 class="year-group" onclick="toggleGroup(this)">
-                {{ .Key }} ({{ len .Pages }})
-            </h2>
-            <div class="months-group" style="display: none;">
-                {{ $pagesByMonth := .Pages.GroupByDate "Jan" }}
-                {{ range $pagesByMonth }}
-                    <h3 class="month-group" onclick="toggleGroup(this)" style="margin-left: 10px;">
-                        {{ .Key }} ({{ len .Pages }})
-                    </h3>
-                    <div class="days-group" style="display: none; margin-left: 20px;">
-                        {{ $pagesByDay := .Pages.GroupByDate "02" }}
-                        {{ range $pagesByDay }}
-                            <h4 class="day-group" onclick="toggleGroup(this)" style="margin-left: 20px;">
-                                {{ .Key }}日 ({{ len .Pages }})
-                            </h4>
-                            <div class="pages-group" style="display: none; margin-left: 30px;">
-                                {{ range .Pages }}
-                                    <div class="post-title">
-                                        <a href="{{ .Permalink }}">#{{ .Title }}{{ if .Params.remark }}  {{ .Params.remark }}{{ end }}</a>
-                                    </div>
-                                {{ end }}
-                            </div>
-                        {{ end }}
-                    </div>
-                {{ end }}
-            </div>
+<div class="articles h-feed post-single">
+  {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about"
+  "posts" "all" "today") }} {{ $pages = where $pages "Params.hidden" "!=" true
+  }} {{ $pagesByYear := $pages.GroupByDate "2006" }}
+  <h1>Archive</h1>
+  <p>
+    此处仅显示碎碎念标题归档。前往
+    <a href="/full" style="font-weight: bolder">Full Content Archive 全收录</a>
+    可在一个页面检索所有碎碎念正文内容，但加载将会需要花费一些时间（~15s，因不同设备有所差异）和内存空间（~1.2G）。
+  </p>
+  <div
+    style="cursor: pointer; color: var(--theme-secondary)"
+    onclick="toggleAllGroups()"
+  >
+    全部展开/全部收起
+  </div>
+  {{ range $pagesByYear }}
+  <h2 class="year-group" onclick="toggleGroup(this)">
+    {{ .Key }} ({{ len .Pages }})
+  </h2>
+  <div class="months-group" style="display: none">
+    {{ $pagesByMonth := .Pages.GroupByDate "Jan" }} {{ range $pagesByMonth }}
+    <h3
+      class="month-group"
+      onclick="toggleGroup(this)"
+      style="margin-left: 10px"
+    >
+      {{ .Key }} ({{ len .Pages }})
+    </h3>
+    <div class="days-group" style="display: none; margin-left: 20px">
+      {{ $pagesByDay := .Pages.GroupByDate "02" }} {{ range $pagesByDay }}
+      <h4
+        class="day-group"
+        onclick="toggleGroup(this)"
+        style="margin-left: 20px"
+      >
+        {{ .Key }}日 ({{ len .Pages }})
+      </h4>
+      <div class="pages-group" style="display: none; margin-left: 30px">
+        {{ range .Pages }}
+        <div class="post-title">
+          <a href="{{ .Permalink }}"
+            >#{{ .Title }}{{ if .Params.remark }} {{ .Params.remark }}{{ end
+            }}</a
+          >
+        </div>
         {{ end }}
+      </div>
+      {{ end }}
     </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
 
-    <script>
-        function toggleGroup(element) {
-            var pagesGroup = element.nextElementSibling;
-            if (pagesGroup.style.display === "none") {
-                pagesGroup.style.display = "block";
-            } else {
-                pagesGroup.style.display = "none";
-            }
-        }
+<script>
+  function toggleGroup(element) {
+    var pagesGroup = element.nextElementSibling;
+    if (pagesGroup.style.display === "none") {
+      pagesGroup.style.display = "block";
+    } else {
+      pagesGroup.style.display = "none";
+    }
+  }
 
-        function toggleAllGroups() {
-            var groups = document.querySelectorAll('.months-group, .days-group, .pages-group');
-            for (var i = 0; i < groups.length; i++) {
-                if (groups[i].style.display === "none") {
-                    groups[i].style.display = "block";
-                } else {
-                    groups[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+  function toggleAllGroups() {
+    var groups = document.querySelectorAll(
+      ".months-group, .days-group, .pages-group"
+    );
+    for (var i = 0; i < groups.length; i++) {
+      if (groups[i].style.display === "none") {
+        groups[i].style.display = "block";
+      } else {
+        groups[i].style.display = "none";
+      }
+    }
+  }
+</script>
 
 {{ end }}

@@ -1,55 +1,16 @@
 /* dark.css */ 
---font-color: #eee;
---first-class-color: #f0f0f0;
---second-class-color: #d9d9d9;
---forbidden-class-color: #bfbfbf;
---first-class-border-color: #424242FF;
---divider-color: #FDFDFD1F;
---bg-color: #121212;
-
---link-color:#599ada;
---link-state-color:#91caff;
---link-state-border-color: #e6f4ff;
-
---thead-bg-color: #343a40;
---table-border-color: lightgrey;
-
---nav-bg-color: #1890ff;
---nav-link-color: #b6b6b6;
-
---pre-color: #f8f8f2;
---pre-bg-color: #272822;
-
---bq-color: #ccc;
---hr-color: #333;
-
---pagination-bg-color: #91d5ff;
---pagination-link-color: #b6b6b6;
-
---post-info-color: #d9d9d9;
-
---switcher-color: #333;
---switcher-bg-color: #fff;
-
---svg-color: #ccc;
---svg-state-color:#1890ff;
-
---color-bg-secondary: #00000000;
---color-bg-secondary-hover: #21262d;
---color-text-secondary: #7d8590;
---color-bg2-secondary: #388bfd1a;
---color-bg2-secondary-hover: #0c2d6b;
---color-text2-secondary: #2f81f7;
-
---shadow-color: #00474f;
-
---theme-color: #91d5ff;
---active-color: #1890ff;
-
---info-bg-color: #272727;
---info-color: #666;
---border-color: #333;
---disable-bg-color: #444;
---bq-color: #272727;
---dark-grey: #999;
-
+--theme-color: #1890ff; /* 主题蓝 */
+--theme-color-hover: #40a9ff; /* 主题蓝 - 悬停 */
+--theme-color-light: #0050b3; /* 主题蓝 - 浅（黑暗模式优化） */
+--theme-secondary: #69c0ff; /* 辅助深蓝 */
+--accent-color: #fa8c16; /* 强调橙色（稍深） */
+--error-color: #a8071a; /* 错误红（降低亮度） */
+--background-color: #121212; /* 深色背景（更深，减少对比度） */
+--background-light: #1b1b2e; /* 浅黑背景（可用于卡片） */
+--background-muted: #242446; /* 次级背景（减少明亮度） */
+--text-primary: #eee; /* 主要文本 */
+--text-secondary: #d9d9d9; /* 次要文本（降低亮度，减少刺眼感） */
+--text-muted: #bfbfbf; /* 辅助文本 */
+--border-color: #334d66; /* 边框色（蓝灰色） */
+--code-background: #1e1e2e; /* 代码块背景（黑暗模式） */
+--code-text: #ffcc99; /* 代码文本颜色（黑暗模式，暖色调） */

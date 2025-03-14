@@ -1,77 +1,75 @@
 {{ define "main" }}
-    <div class="homepage-content">
-        {{ .Content }}
-    </div>
+<div class="homepage-content">{{ .Content }}</div>
 
-    <div class="articles h-feed post-single">
-        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
-        {{ $pages = where $pages "Params.hidden" "!=" true }}
-        {{ $today := now.Format "01-02" }}
-        {{ $filteredPages := slice }}
-        {{ range $pages }}
-            {{ $pageDate := .Date.Format "01-02" }}
-            {{ if eq $pageDate $today }}
-                {{ $filteredPages = $filteredPages | append . }}
-            {{ end }}
-        {{ end }}
-        <h2>On This Day</h2>
-        <h1> {{ now.Format "January 2" }}</h1>
-        {{ if $filteredPages }}
-            <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
-            {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
-            <div class="timeline">
-                {{ range sort $pagesByYear "Key" "desc" }}
-                    <div class="timeline-item">
-                        <div class="timeline-icon"></div>
-                        <div class="timeline-content">
-                            <h2 class="timeline-year">{{ .Key }}</h2>
-                            {{ range .Pages }}
-                                {{ partial "post-summary.html" . }}
-                            {{ end }}
-                        </div>
-                    </div>
-                {{ end }}
-            </div>
-        {{ else }}
-            <p>那年今日 还未回顾到任何碎碎念记录</p>
-        {{ end }}
+<div class="articles h-feed post-single">
+  {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about"
+  "posts" "all" "today") }} {{ $pages = where $pages "Params.hidden" "!=" true
+  }} {{ $today := now.Format "01-02" }} {{ $filteredPages := slice }} {{ range
+  $pages }} {{ $pageDate := .Date.Format "01-02" }} {{ if eq $pageDate $today }}
+  {{ $filteredPages = $filteredPages | append . }} {{ end }} {{ end }}
+  <h2>On This Day</h2>
+  <h1>{{ now.Format "January 2" }}</h1>
+  {{ if $filteredPages }}
+  <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
+  {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
+  <div class="timeline">
+    {{ range sort $pagesByYear "Key" "desc" }}
+    <div class="timeline-item">
+      <div class="timeline-icon"></div>
+      <div class="timeline-content">
+        <h2 class="timeline-year">{{ .Key }}</h2>
+        {{ range .Pages }} {{ partial "post-summary.html" . }} {{ end }}
+      </div>
     </div>
-    <style>
-        .timeline {position: relative;max-width: 100%;margin: 45px auto;}
-       .timeline::after {
-           content: '';
-           position: absolute;
-           width: 1px;
-           background-color: var(--link-state-color);
-           top: 0;
-           bottom: 0;
-           left: 20px;
-       }
-       .timeline-item {
-           position: relative;
-           background-color: inherit;
-           width: 100%;
-       }
-       .timeline-item::before {
-           content: ' ';
-           background-color: var(--link-state-color);
-           position: absolute;
-           width: 12px;
-           height: 12px;
-           left: 14.5px;
-           top: 45px;
-           border-radius: 50%;
-           z-index: 1;
-       }
-       .timeline-year {  
-           color: var(--link-state-color)
-       }
-       .timeline-content {
-           padding-top:20px;  
-           margin-left: 45px;
-           padding-bottom:20px;
-       }
-       
-       .year-group,.month-group{color: var(--link-state-color);}
-   </style>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p>那年今日 还未回顾到任何碎碎念记录</p>
+  {{ end }}
+</div>
+<style>
+  .timeline {
+    position: relative;
+    max-width: 100%;
+    margin: 45px auto;
+  }
+  .timeline::after {
+    content: "";
+    position: absolute;
+    width: 1px;
+    background-color: var(--theme-secondary);
+    top: 0;
+    bottom: 0;
+    left: 20px;
+  }
+  .timeline-item {
+    position: relative;
+    background-color: inherit;
+    width: 100%;
+  }
+  .timeline-item::before {
+    content: " ";
+    background-color: var(--theme-secondary);
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 14.5px;
+    top: 45px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  .timeline-year {
+    color: var(--theme-secondary);
+  }
+  .timeline-content {
+    padding-top: 20px;
+    margin-left: 45px;
+    padding-bottom: 20px;
+  }
+
+  .year-group,
+  .month-group {
+    color: var(--theme-secondary);
+  }
+</style>
 {{ end }}

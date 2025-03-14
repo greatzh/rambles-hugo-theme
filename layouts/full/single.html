@@ -1,54 +1,58 @@
 {{ define "main" }}
-    <div class="homepage-content">
-        {{ .Content }}
+<div class="homepage-content">{{ .Content }}</div>
+
+<div class="articles h-feed post-single">
+  {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about"
+  "posts" "all" "today") }} {{ $pages = where $pages "Params.hidden" "!=" true
+  }} {{ $pagesByYear := $pages.GroupByDate "2006" }}
+  <h1>Full Archive</h1>
+  <div
+    style="cursor: pointer; color: var(--theme-secondary)"
+    onclick="toggleAllGroups()"
+  >
+    全部展开/全部收起
+  </div>
+  {{ range $pagesByYear }}
+  <h2 class="year-group" onclick="toggleGroup(this)">
+    {{ .Key }} ({{ len .Pages }})
+  </h2>
+  <div class="months-group" style="display: block">
+    {{ $pagesByMonth := .Pages.GroupByDate "Jan" }} {{ range $pagesByMonth }}
+    <h3
+      class="month-group"
+      onclick="toggleGroup(this)"
+      style="margin-left: 10px"
+    >
+      {{ .Key }} ({{ len .Pages }})
+    </h3>
+    <div class="pages-group" style="display: block; margin-left: 20px">
+      {{ range .Pages }} {{ partial "post-summary.html" . }} {{ end }}
     </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</div>
 
-    <div class="articles h-feed post-single">
-        {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about" "posts" "all" "today") }}
-        {{ $pages = where $pages "Params.hidden" "!=" true }}
-        {{ $pagesByYear := $pages.GroupByDate "2006" }}
-        <h1>Full Archive</h1>
-        <div style="cursor: pointer; color: var(--link-state-color)" onclick="toggleAllGroups()">全部展开/全部收起</div>
-        {{ range $pagesByYear }}
-            <h2 class="year-group" onclick="toggleGroup(this)">
-                {{ .Key }} ({{ len .Pages }})
-            </h2>
-            <div class="months-group" style="display: block;">
-                {{ $pagesByMonth := .Pages.GroupByDate "Jan" }}
-                {{ range $pagesByMonth }}
-                    <h3 class="month-group" onclick="toggleGroup(this)" style="margin-left: 10px;">
-                        {{ .Key }} ({{ len .Pages }})
-                    </h3>
-                    <div class="pages-group" style="display: block; margin-left: 20px;">
-                        {{ range .Pages }}
-                            {{ partial "post-summary.html" . }}
-                        {{ end }}
-                    </div>
-                {{ end }}
-            </div>
-        {{ end }}
-    </div>
+<script>
+  function toggleGroup(element) {
+    var pagesGroup = element.nextElementSibling;
+    if (pagesGroup.style.display === "none") {
+      pagesGroup.style.display = "block";
+    } else {
+      pagesGroup.style.display = "none";
+    }
+  }
 
-    <script>
-        function toggleGroup(element) {
-            var pagesGroup = element.nextElementSibling;
-            if (pagesGroup.style.display === "none") {
-                pagesGroup.style.display = "block";
-            } else {
-                pagesGroup.style.display = "none";
-            }
-        }
-
-        function toggleAllGroups() {
-            var groups = document.querySelectorAll('.months-group, .pages-group');
-            for (var i = 0; i < groups.length; i++) {
-                if (groups[i].style.display === "none") {
-                    groups[i].style.display = "block";
-                } else {
-                    groups[i].style.display = "none";
-                }
-            }
-        }
-    </script>
+  function toggleAllGroups() {
+    var groups = document.querySelectorAll(".months-group, .pages-group");
+    for (var i = 0; i < groups.length; i++) {
+      if (groups[i].style.display === "none") {
+        groups[i].style.display = "block";
+      } else {
+        groups[i].style.display = "none";
+      }
+    }
+  }
+</script>
 
 {{ end }}

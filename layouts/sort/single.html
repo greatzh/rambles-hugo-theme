@@ -1,13 +1,13 @@
 {{ define "main" }}
 
 <div class="post-single">
-  <h1 class="title-bar_title"><a href="/categories">分类</a></h1>
+  <h2><a href="/categories" style="border-bottom: 0px">分类</a></h2>
 
   <ul class="terms tag-grid">
     {{ range .Site.Taxonomies.categories }} {{ $postsNum := len (where .Pages
     "Params.hidden" "!=" true) }} {{ if gt $postsNum 0 }}
-    <li style="color: var(--bg-color)">
-      <a href="{{ .Page.RelPermalink }}">
+    <li style="color: var(--background-color)">
+      <a class="hover-fill-effect" href="{{ .Page.RelPermalink }}">
         <div>
           {{ i18n .Page.Title | markdownify }}
           <sup>({{ $postsNum }})</sup>
@@ -16,13 +16,13 @@
     </li>
     {{ end}} {{ end }}
   </ul>
-  <h1 class="title-bar_title"><a href="/tags">标签</a></h1>
+  <h2><a href="/tags" style="border-bottom: 0px">标签</a></h2>
 
   <ul class="terms tag-grid">
     {{ range .Site.Taxonomies.tags }} {{ $postsNum := len (where .Pages
     "Params.hidden" "!=" true) }} {{ if gt $postsNum 0 }}
-    <li style="color: var(--bg-color)">
-      <a href="{{ .Page.RelPermalink }}">
+    <li style="color: var(--background-color)">
+      <a class="hover-fill-effect" href="{{ .Page.RelPermalink }}">
         <div>
           #{{ i18n .Page.Title | markdownify }}
           <sup>({{ $postsNum }})</sup>
