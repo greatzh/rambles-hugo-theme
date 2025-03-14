@@ -8,11 +8,11 @@
   <h1>Archive</h1>
 
   <!-- 搜索 -->
-  <div style="padding:1rem;">
+  <div style="padding: 1rem">
     <header class="post-header">
       <h2><a href="/search" style="border-bottom: 0px">搜索</a></h2>
     </header>
-  
+
     <div>
       <div class="search-container">
         <input
@@ -23,27 +23,27 @@
         />
         <div id="search-results"></div>
       </div>
-  
+
       {{ .Content }}
     </div>
     <style>
       /* 搜索样式 */
       .search-container {
         margin-bottom: 2rem;
-      } 
+      }
       #search-input {
-          width: 90%;
-          padding: 0.8rem;
-          font-size: 1rem;
-          border: 1px solid var(--border-color);
-          border-radius: 4px;
-          margin-bottom: 1rem;
-          margin-left: auto;
-          margin-right: auto;
-          display: block;
-          background-color: var(--background-color);
-          color: var(--text-color);
-        } 
+        width: 90%;
+        padding: 0.8rem;
+        font-size: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        margin-bottom: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
       #search-results {
         margin-top: 1rem;
         max-height: 500px;
@@ -58,13 +58,13 @@
       }
       .search-result-item {
         padding: 1rem;
-        margin-bottom: 1rem;  
+        margin-bottom: 1rem;
         transition: all 0.2s ease;
         border-radius: 0.5rem;
       }
       .search-result-item:hover {
         background-color: var(--background-muted);
-      }  
+      }
       .search-result-title {
         display: block;
         font-size: 1.2rem;
@@ -80,7 +80,7 @@
         margin-bottom: 0.5rem;
       }
       .search-result-description {
-        font:400 1rem/1.75 Microsoft JhengHei,monospace;
+        font: 400 1rem/1.75 Microsoft JhengHei, monospace;
         color: var(--text-secondary);
       }
       .search-no-results {
@@ -88,19 +88,19 @@
         text-align: center;
         color: var(--text-muted);
       }
-      </style>
-      
-      <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
-      <script src="/js/search.js"></script>
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script src="/js/search.js"></script>
   </div>
-  
+
   <!-- 那年今日 -->
-  <div style="padding:1rem;">
+  <div style="padding: 1rem">
     {{ $pages := where .Site.RegularPages "Section" "not in" (slice "about"
     "posts" "all" "today") }} {{ $pages = where $pages "Params.hidden" "!=" true
     }} {{ $today := now.Format "01-02" }} {{ $filteredPages := slice }} {{ range
-    $pages }} {{ $pageDate := .Date.Format "01-02" }} {{ if eq $pageDate $today }}
-    {{ $filteredPages = $filteredPages | append . }} {{ end }} {{ end }}
+    $pages }} {{ $pageDate := .Date.Format "01-02" }} {{ if eq $pageDate $today
+    }} {{ $filteredPages = $filteredPages | append . }} {{ end }} {{ end }}
     <h2><a href="/today" style="border-bottom: 0px">On This Day</a></h2>
     <h1>{{ now.Format "January 2" }}</h1>
     {{ if $filteredPages }}
@@ -160,14 +160,13 @@
         margin-left: 45px;
         padding-bottom: 20px;
       }
-    
+
       .year-group,
       .month-group {
         color: var(--theme-secondary);
       }
     </style>
   </div>
-
 
   <!-- GitHub 风格的贡献图表 -->
   <div class="github-style-contribution">
@@ -231,9 +230,9 @@
   </div>
 
   <!-- 分类和标签 -->
-  <div style="padding:1rem;">
+  <div style="padding: 1rem">
     <h2><a href="/categories" style="border-bottom: 0px">分类</a></h2>
-  
+
     <ul class="terms tag-grid">
       {{ range .Site.Taxonomies.categories }} {{ $postsNum := len (where .Pages
       "Params.hidden" "!=" true) }} {{ if gt $postsNum 0 }}
@@ -248,7 +247,7 @@
       {{ end}} {{ end }}
     </ul>
     <h2><a href="/tags" style="border-bottom: 0px">标签</a></h2>
-  
+
     <ul class="terms tag-grid">
       {{ range .Site.Taxonomies.tags }} {{ $postsNum := len (where .Pages
       "Params.hidden" "!=" true) }} {{ if gt $postsNum 0 }}
@@ -264,7 +263,6 @@
     </ul>
   </div>
 </div>
-
 
 <!-- 引入贡献热力图的JavaScript -->
 <script src="/js/contribution-graph.js"></script>
@@ -501,7 +499,7 @@
   /* 内容预览样式 */
   .post-content-preview {
     margin-top: 0.5rem;
-    font:400 1rem/1.75 Microsoft JhengHei,monospace;
+    font: 400 1rem/1.75 Microsoft JhengHei, monospace;
     color: var(--text-secondary);
     line-height: 1.4;
     overflow: hidden;
