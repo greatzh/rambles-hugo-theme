@@ -297,8 +297,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const weekPosition = monthFirstWeek[monthYear];
 
         // 设置月份标签的位置
-        const cellWidth = window.innerWidth <= 840 ? 12 : 18; // 移动设备上单元格宽度更小
-        const labelOffset = window.innerWidth <= 840 ? 20 : 35; // 移动设备上标签偏移更小
+        const cellWidth = 18; // 移动设备上单元格宽度更小
+        const labelOffset = 35; // 移动设备上标签偏移更小
         monthLabel.style.left = `${weekPosition * cellWidth + labelOffset}px`;
 
         // 将月份标签添加到月份行
@@ -313,8 +313,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const monthYear = label.dataset.month;
         const weekPosition = monthFirstWeek[monthYear];
         if (weekPosition !== undefined) {
-          const cellWidth = window.innerWidth <= 840 ? 12 : 18;
-          const labelOffset = window.innerWidth <= 840 ? 20 : 35;
+          const cellWidth = 18;
+          const labelOffset = 35;
           label.style.left = `${weekPosition * cellWidth + labelOffset}px`;
         }
       });

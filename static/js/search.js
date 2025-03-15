@@ -94,11 +94,16 @@
           return;
         }
 
+        // 添加结果计数信息
+        const resultCount = document.createElement("div");
+        resultCount.className = "search-result-count";
+        resultCount.textContent = `共找到 ${results.length} 条碎碎念`;
+        searchResults.appendChild(resultCount);
+
         // 构建结果列表
         const resultsList = document.createElement("ul");
         resultsList.className = "search-results-list";
 
-        // 最多显示30个结果
         // 按日期排序，最新的排在前面
         const sortedResults = [...results].sort((a, b) => {
           const dateA = a.item.date ? new Date(a.item.date) : new Date(0);
@@ -106,7 +111,8 @@
           return dateB - dateA; // 降序排列，最新的在前
         });
 
-        sortedResults.slice(0, 30).forEach((result) => {
+        // 显示所有结果，不再限制为30条
+        sortedResults.forEach((result) => {
           const item = result.item;
 
           const li = document.createElement("li");

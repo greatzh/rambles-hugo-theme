@@ -15,12 +15,31 @@
 
     <div>
       <div class="search-container">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="输入关键词搜索..."
-          autocomplete="off"
-        />
+        <div class="search-input-wrapper">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="输入关键词搜索..."
+            autocomplete="off"
+          />
+          <span id="search-clear" class="search-clear" style="display: none"
+            >×</span
+          >
+        </div>
+
+        <!-- 热门搜索标签 -->
+        <div class="hot-tags">
+          <span class="hot-tags-title">热门话题：</span>
+          <div class="hot-tags-list">
+            <span class="hot-tag hover-fill-effect" data-tag="梦想">梦想</span>
+            <span class="hot-tag hover-fill-effect" data-tag="孤独">孤独</span>
+            <span class="hot-tag hover-fill-effect" data-tag="公交车"
+              >公交车</span
+            >
+            <span class="hot-tag hover-fill-effect" data-tag="自己">自己</span>
+          </div>
+        </div>
+
         <div id="search-results"></div>
       </div>
 
@@ -31,6 +50,13 @@
       .search-container {
         margin-bottom: 2rem;
       }
+
+      .search-input-wrapper {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+      }
+
       #search-input {
         width: 90%;
         padding: 0.8rem;
@@ -38,12 +64,55 @@
         border: 1px solid var(--border-color);
         border-radius: 4px;
         margin-bottom: 1rem;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
         background-color: var(--background-color);
         color: var(--text-color);
       }
+
+      .search-clear {
+        position: absolute;
+        right: 0.8rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+        cursor: pointer;
+        line-height: 1;
+        margin-top: -0.5rem; /* 微调垂直位置 */
+      }
+
+      .search-clear:hover {
+        color: var(--theme-color);
+      }
+
+      /* 热门搜索标签样式 */
+      .hot-tags {
+        width: 90%;
+        margin: 0 auto 1.5rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .hot-tags-title {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .hot-tags-list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .hot-tag {
+        display: inline-block;
+        margin: 0 1rem 0.5rem 0;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        cursor: pointer;
+      }
+
       #search-results {
         margin-top: 1rem;
         max-height: 500px;
@@ -51,6 +120,15 @@
         scrollbar-width: thin; /* Firefox */
         scrollbar-color: var(--border-color) var(--background-light); /* Firefox */
       }
+
+      .search-result-count {
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        color: var(--text-secondary);
+        border-bottom: 1px solid var(--border-color);
+      }
+
       .search-results-list {
         list-style: none;
         padding: 0;
@@ -92,6 +170,55 @@
 
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
     <script src="/js/search.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById("search-input");
+        const searchResults = document.getElementById("search-results");
+        const searchClear = document.getElementById("search-clear");
+        const hotTags = document.querySelectorAll(".hot-tag");
+
+        // 监听输入框变化，显示/隐藏清除按钮
+        searchInput.addEventListener("input", function () {
+          if (searchInput.value.trim() !== "") {
+            searchClear.style.display = "block";
+          } else {
+            searchClear.style.display = "none";
+          }
+        });
+
+        // 清除按钮点击事件
+        searchClear.addEventListener("click", function () {
+          searchInput.value = "";
+          searchResults.innerHTML = "";
+          searchClear.style.display = "none";
+          searchInput.focus(); // 保持焦点在输入框
+        });
+
+        // 热门标签点击事件
+        hotTags.forEach((tag) => {
+          tag.addEventListener("click", function () {
+            const tagText = this.getAttribute("data-tag");
+            searchInput.value = tagText;
+            searchClear.style.display = "block"; // 显示清除按钮
+
+            // 触发input事件以执行搜索
+            const inputEvent = new Event("input", {
+              bubbles: true,
+              cancelable: true,
+            });
+            searchInput.dispatchEvent(inputEvent);
+
+            // 滚动到搜索结果
+            setTimeout(() => {
+              if (searchResults) {
+                searchResults.scrollIntoView({ behavior: "smooth" });
+              }
+            }, 100);
+          });
+        });
+      });
+    </script>
   </div>
 
   <!-- 那年今日 -->
@@ -102,24 +229,58 @@
     $pages }} {{ $pageDate := .Date.Format "01-02" }} {{ if eq $pageDate $today
     }} {{ $filteredPages = $filteredPages | append . }} {{ end }} {{ end }}
     <h2><a href="/today" style="border-bottom: 0px">On This Day</a></h2>
-    <h1>{{ now.Format "January 2" }}</h1>
-    {{ if $filteredPages }}
-    <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
-    {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
-    <div class="timeline">
-      {{ range sort $pagesByYear "Key" "desc" }}
-      <div class="timeline-item">
-        <div class="timeline-icon"></div>
-        <div class="timeline-content">
-          <h2 class="timeline-year">{{ .Key }}</h2>
-          {{ range .Pages }} {{ partial "post-summary.html" . }} {{ end }}
+    <h1 id="today-date">{{ now.Format "January 2" }}</h1>
+    <div id="today-content">
+      {{ if $filteredPages }}
+      <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
+      {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
+      <div class="timeline">
+        {{ range sort $pagesByYear "Key" "desc" }}
+        <div class="timeline-item">
+          <div class="timeline-icon"></div>
+          <div class="timeline-content">
+            <h2 class="timeline-year">{{ .Key }}</h2>
+            {{ range .Pages }} {{ partial "post-summary.html" . }} {{ end }}
+          </div>
         </div>
+        {{ end }}
       </div>
+      {{ else }}
+      <p>那年今日 还未回顾到任何碎碎念记录</p>
       {{ end }}
     </div>
-    {{ else }}
-    <p>那年今日 还未回顾到任何碎碎念记录</p>
-    {{ end }}
+
+    <script>
+      // 使用JavaScript获取正确的本地日期
+      document.addEventListener("DOMContentLoaded", function () {
+        // 获取当前本地日期
+        const now = new Date();
+        const month = now.getMonth(); // 0-11
+        const day = now.getDate(); // 1-31
+
+        // 月份名称数组
+        const monthNames = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+
+        // 更新显示的日期
+        const todayDateElement = document.getElementById("today-date");
+        if (todayDateElement) {
+          todayDateElement.textContent = monthNames[month] + " " + day;
+        }
+      });
+    </script>
 
     <style>
       .timeline {
