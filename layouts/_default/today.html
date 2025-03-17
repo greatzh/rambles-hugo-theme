@@ -8,58 +8,25 @@
   $pages }} {{ $pageDate := .Date.Format "01-02" }} {{ if eq $pageDate $today }}
   {{ $filteredPages = $filteredPages | append . }} {{ end }} {{ end }}
   <h2>On This Day</h2>
-  <h1 id="today-date">{{ now.Format "January 2" }}</h1>
-  <div id="today-content">
-    {{ if $filteredPages }}
-    <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
-    {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
-    <div class="timeline">
-      {{ range sort $pagesByYear "Key" "desc" }}
-      <div class="timeline-item">
-        <div class="timeline-icon"></div>
-        <div class="timeline-content">
-          <h2 class="timeline-year">{{ .Key }}</h2>
-          {{ range .Pages }} {{ partial "post-summary.html" . }} {{ end }}
-        </div>
+  <h1>{{ now.Format "January 2" }}</h1>
+  {{ if $filteredPages }}
+  <p>那年今日 共有 {{ len $filteredPages }} 条碎碎念</p>
+  {{ $pagesByYear := $filteredPages.GroupByDate "2006" }}
+  <div class="timeline">
+    {{ range sort $pagesByYear "Key" "desc" }}
+    <div class="timeline-item">
+      <div class="timeline-icon"></div>
+      <div class="timeline-content">
+        <h2 class="timeline-year">{{ .Key }}</h2>
+        {{ range .Pages }} {{ partial "post-summary.html" . }} {{ end }}
       </div>
-      {{ end }}
     </div>
-    {{ else }}
-    <p>那年今日 还未回顾到任何碎碎念记录</p>
     {{ end }}
   </div>
-
-  <script>
-    // 使用JavaScript获取正确的本地日期
-    document.addEventListener("DOMContentLoaded", function () {
-      // 获取当前本地日期
-      const now = new Date();
-      const month = now.getMonth(); // 0-11
-      const day = now.getDate(); // 1-31
-
-      // 月份名称数组
-      const monthNames = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ];
-
-      // 更新显示的日期
-      const todayDateElement = document.getElementById("today-date");
-      if (todayDateElement) {
-        todayDateElement.textContent = monthNames[month] + " " + day;
-      }
-    });
-  </script>
+  {{ else }}
+  <p>那年今日 还未回顾到任何碎碎念记录</p>
+  {{ end }}
+</div>
 <style>
   .timeline {
     position: relative;
