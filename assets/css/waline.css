@@ -862,13 +862,13 @@
 }
 .wl-reaction-img {
   position: relative;
-  width: 42px;
-  height: 42px;
+  width: 100px;
+  height: 100px;
 }
 @media (max-width: 768px) {
   .wl-reaction-img {
-    width: 32px;
-    height: 32px;
+    width: 60px;
+    height: 60px;
   }
 }
 .wl-reaction-loading {
