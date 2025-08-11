@@ -1,21 +1,21 @@
 /* dark.css */ 
---theme-color: #1890ff; /* 主题蓝 */
---theme-color-hover: #40a9ff; /* 主题蓝 - 悬停 */
---theme-color-light: #0050b3; /* 主题蓝 - 浅（黑暗模式优化） */
+--theme-color: #4385BE; /* 主题蓝 */
+--theme-color-hover: #12253B; /* 主题蓝 - 悬停 */
+--theme-color-light: #1A4F8C; /* 主题蓝 - 浅（黑暗模式优化） */
 --theme-secondary: #69c0ff; /* 辅助深蓝 */
---accent-color: #fa8c16; /* 强调橙色（稍深） */
+--accent-color: #66A0C8; /* 强调橙色（稍深） */
 --error-color: #a8071a; /* 错误红（降低亮度） */
---background-color: #121212; /* 深色背景（更深，减少对比度） */
---background-light: #1b1b2e; /* 浅黑背景（可用于卡片） */
+--background-color: #100f0f; /* 深色背景（更深，减少对比度） */
+--background-light: #1c1b1a; /* 浅黑背景（可用于卡片） */
 --background-muted: #242446; /* 次级背景（减少明亮度） */
---text-primary: #eee; /* 主要文本 */
---text-secondary: #d9d9d9; /* 次要文本（降低亮度，减少刺眼感） */
---text-muted: #bfbfbf; /* 辅助文本 */
---border-color: #334d66; /* 边框色（蓝灰色） */
+--text-primary: #cecdc3; /* 主要文本 */
+--text-muted: #575653; /* 次要文本（降低亮度，减少刺眼感） */
+--text-secondary: #878580; /* 辅助文本 */
+--border-color: #282726; /* 边框色（蓝灰色） */
 --code-background: #1e1e2e; /* 代码块背景（黑暗模式） */
 --code-text: #ffcc99; /* 代码文本颜色（黑暗模式，暖色调） */
---theme-color-level0: #001d66;;
---theme-color-level1: #003eb3;
---theme-color-level2: #1677ff;
---theme-color-level3: #69b1ff;
---theme-color-level4: #bae0ff;
+--theme-color-level0: #101A24;
+--theme-color-level1: #163B66;
+--theme-color-level2: #205EA6;
+--theme-color-level3: #66A0C8;
+--theme-color-level4: #C6DDE8;

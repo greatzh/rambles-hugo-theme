@@ -516,7 +516,7 @@
   width: 100%;
   border-width: 2px;
   border-style: solid;
-  border-color: #fff;
+  border-color: #fffcf0;
   cursor: pointer;
 }
 .wl-gif-popup img:hover {
@@ -1117,7 +1117,7 @@
   padding: 0.5em 1em;
   border-radius: 2px;
   background: rgba(16, 16, 16, 0.95);
-  color: #fff;
+  color: #fffcf0;
   font-size: 12px;
   white-space: nowrap;
 }
